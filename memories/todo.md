@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 1 terminado. Esperando aprobación del usuario para iniciar el Punto 2.**
+> Estado: **Punto 2 terminado. Esperando aprobación del usuario para iniciar el Punto 3.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -40,7 +40,9 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Verificar que `docker compose up dev` sirve la página en `http://localhost:4321`.
 - Memoria: `memories/infraestructura.md` (comandos, puertos, cómo arrancar, cómo resolver problemas).
 
-### [ ] Punto 2. Arquitectura multi-mitología y esquema de datos
+### [x] Punto 2. Arquitectura multi-mitología y esquema de datos
+- Hecho: `src/content.config.ts`, `src/lib/mitologias.ts` (acceso + validación), griega con 4 seres de ejemplo,
+  nórdica como `proximamente`. Los seres son `.md` (frontmatter = datos, cuerpo = descripción); `hijos` se calcula.
 - Estructura: `src/content/mitologias/<id>/` (p. ej. `griega/`), con un archivo de metadatos por mitología
   (nombre, fuente canónica, salas/eras, paleta) y un archivo por ser.
 - Esquema Zod de un ser: `id`, `nombre`, `nombreOriginal` (griego), `transliteracion`, `orden` (cronológico),
@@ -108,3 +110,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-22: creado este plan y `memories/README.md`.
 - 2026-10-22: Punto 1 terminado. Docker Compose + Astro 7.4.2 sobre Node 26.12.1. Verificados dev (4321),
   recarga en caliente y build. `AGENTS.md` en la raíz apunta a `memories/`. Detalle en `memories/infraestructura.md`.
+- 2026-10-22: Punto 2 terminado. Colecciones `mitologias` y `seres`, validación de relaciones en
+  `src/lib/mitologias.ts` (probada con un archivo inválido), `orden` = verso de primera aparición.
+  `.gitattributes` fuerza LF. Detalle en `memories/arquitectura.md`, `esquema-datos.md` y `mitologias/griega.md`.

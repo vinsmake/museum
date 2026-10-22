@@ -1,0 +1,83 @@
+nombre: Mitología griega
+estado: activa
+orden: 1
+descripcion: >-
+  El nacimiento del mundo y de los dioses tal como lo canta Hesíodo en la Teogonía:
+  desde el Caos primordial hasta el reinado de Zeus y su descendencia.
+canon:
+  obra: Teogonía
+  autor: Hesíodo
+  fecha: c. 700 a. C.
+  traduccionReferencia: H. G. Evelyn-White (1914), dominio público. Las citas en español son traducción propia.
+  url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0130
+criterioOrden: >-
+  El orden de cada ser es el número del verso de la Teogonía en que aparece por primera vez
+  dentro del relato genealógico. Los decimales desempatan seres del mismo verso (117, 117.1...).
+tema:
+  piedra: '#e9e4da'
+  acento: '#b08d57'
+
+categorias:
+  - id: primordial
+    nombre: Primordiales
+    descripcion: Las primeras potencias del cosmos, surgidas sin padres o del Caos.
+  - id: titan
+    nombre: Titanes
+    descripcion: Los doce hijos de Gea y Urano y su generación.
+  - id: olimpico
+    nombre: Olímpicos
+    descripcion: Los dioses que reinan desde el Olimpo tras la Titanomaquia.
+  - id: deidad
+    nombre: Deidades
+    descripcion: Dioses y diosas que no son titanes ni olímpicos.
+  - id: personificacion
+    nombre: Personificaciones
+    descripcion: Conceptos convertidos en divinidad (la Muerte, el Sueño, la Discordia...).
+  - id: ninfa
+    nombre: Ninfas
+    descripcion: Nereidas, Oceánides, Melias y otras divinidades femeninas de la naturaleza.
+  - id: raza
+    nombre: Razas primigenias
+    descripcion: Cíclopes, Hecatónquiros y Gigantes.
+  - id: monstruo
+    nombre: Monstruos
+    descripcion: Criaturas como Tifón, Equidna, la Hidra o la Quimera.
+  - id: mortal
+    nombre: Mortales y héroes
+    descripcion: Pandora, los héroes y los mortales que se unen a los dioses.
+
+# Salas en el orden del poema. Pendiente de confirmar en el Punto 3 (ver memories/mitologias/griega.md).
+salas:
+  - id: proemio
+    nombre: Las Musas del Helicón
+    versos: 1-115
+  - id: primordiales
+    nombre: El origen del mundo
+    versos: 116-125
+  - id: hijos-de-gea
+    nombre: Hijos de Gea y Urano
+    versos: 126-153
+  - id: castracion
+    nombre: La caída de Urano
+    versos: 154-210
+  - id: hijos-de-nix
+    nombre: Hijos de la Noche y la Discordia
+    versos: 211-232
+  - id: linaje-del-mar
+    nombre: El linaje del mar
+    versos: 233-336
+  - id: hijos-de-titanes
+    nombre: Hijos de los Titanes
+    versos: 337-452
+  - id: olimpicos
+    nombre: El nacimiento de los Olímpicos
+    versos: 453-506
+  - id: prometeo
+    nombre: Prometeo y Pandora
+    versos: 507-616
+  - id: titanomaquia
+    nombre: Titanomaquia y Tifón
+    versos: 617-880
+  - id: reinado-de-zeus
+    nombre: El reinado de Zeus
+    versos: 881-1022

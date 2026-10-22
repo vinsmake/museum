@@ -1,5 +1,11 @@
 ---
-// Portada provisional (Punto 1). Se reemplaza en el Punto 6 por el selector de mitologías.
+// Portada provisional (Puntos 1-2): lista las mitologías y sus seres para comprobar la carga de datos.
+// Se reemplaza en el Punto 6 por el selector de mitologías.
+import { getMitologias, getSalas } from '../lib/mitologias';
+
+const mitologias = await Promise.all(
+  (await getMitologias()).map(async (m) => ({ mitologia: m, salas: await getSalas(m.id) })),
+);
 ---
 
 <html lang="es">
@@ -13,6 +19,25 @@
 	</head>
 	<body>
 		<h1>Museo Mitológico</h1>
-		<p>En construcción. Primera sala: la Teogonía de Hesíodo.</p>
+		<p>En construcción.</p>
+		{mitologias.map(({ mitologia, salas }) => (
+			<section>
+				<h2>{mitologia.data.nombre} ({mitologia.data.estado})</h2>
+				<p>Canon: {mitologia.data.canon.obra}, {mitologia.data.canon.autor}</p>
+				{salas.filter((sala) => sala.seres.length > 0).map((sala) => (
+					<>
+						<h3>{sala.nombre} (vv. {sala.versos})</h3>
+						<ol>
+							{sala.seres.map((ser) => (
+								<li>
+									{ser.data.nombre} ({ser.data.nombreOriginal}), v. {ser.data.aparicion.versos}
+									{ser.hijos.length > 0 && <> · hijos: {ser.hijos.join(', ')}</>}
+								</li>
+							))}
+						</ol>
+					</>
+				))}
+			</section>
+		))}
 	</body>
 </html>
