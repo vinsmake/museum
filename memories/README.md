@@ -17,7 +17,7 @@ porque las sesiones cambian y el contexto se pierde.
 | Archivo | Contenido | Estado |
 |---|---|---|
 | `todo.md` | Plan y avance | listo |
-| `infraestructura.md` | Docker, comandos, puertos | pendiente (Punto 1) |
+| `infraestructura.md` | Docker, comandos, puertos | listo |
 | `arquitectura.md` | Estructura multi-mitología | pendiente (Punto 2) |
 | `esquema-datos.md` | Campos de cada ser | pendiente (Punto 2) |
 | `mitologias/griega.md` | Fuentes y criterios de la mitología griega | pendiente (Punto 3) |

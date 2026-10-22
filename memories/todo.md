@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **PLAN PROPUESTO, esperando aprobación del usuario para iniciar el Punto 1.**
+> Estado: **Punto 1 terminado. Esperando aprobación del usuario para iniciar el Punto 2.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -32,7 +32,8 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 
 ## Puntos
 
-### [ ] Punto 1. Infraestructura Docker + proyecto Astro vacío
+### [x] Punto 1. Infraestructura Docker + proyecto Astro vacío
+- Hecho: Node `26.12.1-alpine`, Astro `7.4.2`, servicios `dev`, `build`, `preview`, `npm`.
 - `Dockerfile` basado en la imagen `node` más reciente (alpine si es compatible).
 - `docker-compose.yml` con servicios `dev` (puerto 4321, volumen montado, `node_modules` en volumen aparte) y `build`.
 - Crear el proyecto Astro dentro del contenedor (sin instalar nada en el host).
@@ -104,4 +105,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Punto 3: ¿incluir también seres que Hesíodo solo menciona de pasada (p. ej. cada una de las 41 Oceánides y 50 Nereidas, cada río)? Propuesta: sí, todos, porque el pedido es "absolutamente todos".
 
 ## Registro de avance
-- 2026-10-22: creado este plan y `memories/README.md`. Ningún punto iniciado.
+- 2026-10-22: creado este plan y `memories/README.md`.
+- 2026-10-22: Punto 1 terminado. Docker Compose + Astro 7.4.2 sobre Node 26.12.1. Verificados dev (4321),
+  recarga en caliente y build. `AGENTS.md` en la raíz apunta a `memories/`. Detalle en `memories/infraestructura.md`.

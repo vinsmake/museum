@@ -1,0 +1,43 @@
+name: museo-mitologico
+
+x-app: &app
+  build: .
+  image: museo-mitologico:dev
+  volumes:
+    - .:/app
+    # node_modules vive en un volumen propio: no se mezcla con el host (Windows).
+    - node_modules:/app/node_modules
+
+services:
+  # Servidor de desarrollo con recarga en caliente: http://localhost:4321
+  dev:
+    <<: *app
+    ports:
+      - "4321:4321"
+    environment:
+      # Detección de cambios fiable en volúmenes montados desde Windows.
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
+
+  # Genera el sitio estático en ./dist
+  build:
+    <<: *app
+    profiles: ["tools"]
+    command: ["npm", "run", "build"]
+
+  # Sirve ./dist ya construido: http://localhost:4322
+  preview:
+    <<: *app
+    profiles: ["tools"]
+    ports:
+      - "4322:4322"
+    command: ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "4322"]
+
+  # Ejecutar cualquier comando npm/npx: docker compose run --rm npm install three
+  npm:
+    <<: *app
+    profiles: ["tools"]
+    entrypoint: ["npm"]
+
+volumes:
+  node_modules:
