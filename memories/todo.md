@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 2 terminado. Esperando aprobación del usuario para iniciar el Punto 3.**
+> Estado: **Punto 3 terminado. Esperando aprobación del usuario para iniciar el Punto 4.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -51,10 +51,11 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   `fuente` (obra + versos, p. ej. *Teogonía* 116-122), `apariencia` (parámetros de la estatua).
 - Memoria: `memories/arquitectura.md` y `memories/esquema-datos.md`.
 
-### [ ] Punto 3. Datos de la mitología griega según la Teogonía de Hesíodo
+### [x] Punto 3. Datos de la mitología griega según la Teogonía de Hesíodo
+- Hecho: 313 seres en 11 salas. Criterio de orden y decisiones en `memories/mitologias/griega.md`.
 - Recorrer la Teogonía en orden y registrar a **todos** los seres nombrados, con su número de verso de primera aparición
   como criterio de orden cronológico.
-- Salas (eras) propuestas:
+- Salas (eras) propuestas en el plan original (SUPERADO: las salas definitivas siguen el orden del poema y están en `memories/mitologias/griega.md`):
   1. Los primordiales (Caos, Gea, Tártaro, Eros, Érebo, Nix...) — vv. 116-125
   2. Hijos de Nix y de Érebo — vv. 211-232
   3. Descendencia de Gea y Urano: Titanes, Cíclopes, Hecatónquiros — vv. 126-153
@@ -104,7 +105,10 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 
 ## Preguntas abiertas (resolver antes del punto indicado)
 - Punto 9: ¿dónde publicar?
-- Punto 3: ¿incluir también seres que Hesíodo solo menciona de pasada (p. ej. cada una de las 41 Oceánides y 50 Nereidas, cada río)? Propuesta: sí, todos, porque el pedido es "absolutamente todos".
+
+## Decisiones tomadas
+- Punto 3 (2026-10-22): se incluyen uno por uno todos los nombrados (Nereidas, Oceánides, ríos). Las Musas abren
+  el recorrido en la sala del proemio; el resto se ordena por el verso de su nacimiento u origen (o primera mención).
 
 ## Registro de avance
 - 2026-10-22: creado este plan y `memories/README.md`.
@@ -113,3 +117,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-22: Punto 2 terminado. Colecciones `mitologias` y `seres`, validación de relaciones en
   `src/lib/mitologias.ts` (probada con un archivo inválido), `orden` = verso de primera aparición.
   `.gitattributes` fuerza LF. Detalle en `memories/arquitectura.md`, `esquema-datos.md` y `mitologias/griega.md`.
+- 2026-10-22: Punto 3 terminado. 313 seres de la Teogonía (vv. 1-1022) generados una vez desde tablas; ahora los
+  `.md` son la fuente de verdad. Build OK con validación. Se añadió la categoría `criatura`. Los valores de
+  `estatua.figura` y `estatua.atributos` que debe cubrir el Punto 4 están en `memories/esquema-datos.md`.

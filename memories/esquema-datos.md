@@ -44,10 +44,29 @@ Frontmatter YAML + cuerpo markdown (la descripción larga).
 ### `estatua`
 | Campo | Por defecto | Valores |
 |---|---|---|
-| `figura` | `humana` | `humana`, `alada`, `abstracta`, `serpentina`, `monstruo`... (la lista definitiva sale del Punto 4) |
+| `figura` | `humana` | ver lista abajo |
 | `genero` | `neutro` | `femenino`, `masculino`, `neutro` |
-| `escala` | `1` | tamaño relativo |
-| `atributos` | `[]` | objetos que porta: `rayo`, `tridente`, `hoz`, `cornucopia`, `alas`... (catálogo en `estatuas.md`, Punto 4) |
+| `escala` | `1` | tamaño relativo (Zeus 1.25, Tifón 1.5) |
+| `atributos` | `[]` | objetos o rasgos de la estatua (ver lista abajo) |
+
+Valores usados en la mitología griega al cerrar el Punto 3 (el generador del Punto 4 debe cubrirlos todos;
+el catálogo definitivo estará en `estatuas.md`):
+
+- **figura**: humana (229), rio (25), alada (18), grupo (13), monstruo (10), hibrida (5), animal (5),
+  abstracta (5), serpentina (2), astral (1).
+- **atributos**: cantaro, concha, alas, cetro, lanza, antorcha, velo, corona, casco, escudo, serpientes, olas,
+  martillo, garras, flores, espada, copa, tridente, remo, perro, ojo-unico, mascara, manzana-oro, leon, estrella,
+  cornucopia, cola-pez, cincuenta-cabezas, cien-brazos, baston, arco, vara-medir, tres-cabezas, tirso, petaso,
+  pergamino, ojo-compartido, manto-estrellado, lira, lechuza, espigas, corona-rayos, corona-laurel, cola-serpiente,
+  cayado, caracola, caduceo, caballo, balanza, aguila, yunque, velo-estrellado, vellocino, vara, tres-cuerpos,
+  tinaja, tijeras, tablilla, serpiente-marina, sandalias-aladas, rueda, rayo, rama-fresno, racimo, pinzas,
+  piel-leon, pez, pavo-real, paloma, muchas-cabezas, maza, mascara-tragica, mascara-comica, llama, leones, huso,
+  hoz, hilo, granada, espada-oro, esfera-celeste, egida, dos-cabezas, cuerpo-caballo, cuernos-carnero,
+  creciente-lunar, corona-torre, colmena, collar, citara, ciervo, cien-cabezas-serpiente, caja, cadenas, cabra,
+  cabeza-medusa, boveda-celeste, aulos, armadura, antorcha-invertida, amapola.
+
+Para recalcular el recuento:
+`grep -h '^  atributos:' src/content/mitologias/*/seres/*.md | grep -oE '"[^"]+"' | sort | uniq -c | sort -rn`
 
 ## Ejemplo completo
 ```markdown

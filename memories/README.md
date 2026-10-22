@@ -24,7 +24,7 @@ porque las sesiones cambian y el contexto se pierde.
 | `infraestructura.md` | Docker, comandos, puertos | listo |
 | `arquitectura.md` | Estructura multi-mitología | listo |
 | `esquema-datos.md` | Campos de cada ser | listo |
-| `mitologias/griega.md` | Fuentes y criterios de la mitología griega | iniciado (se completa en Punto 3) |
+| `mitologias/griega.md` | Fuentes, criterio de orden, salas, nombres repetidos y pasajes ambiguos | listo |
 | `estatuas.md` | Generador procedural de estatuas | pendiente (Punto 4) |
 | `guias/agregar-ser.md` | Cómo añadir un ser | pendiente (Punto 8) |
 | `guias/modificar-datos.md` | Cómo editar datos | pendiente (Punto 8) |

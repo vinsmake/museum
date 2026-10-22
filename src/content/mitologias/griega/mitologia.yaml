@@ -11,8 +11,9 @@ canon:
   traduccionReferencia: H. G. Evelyn-White (1914), dominio público. Las citas en español son traducción propia.
   url: https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0130
 criterioOrden: >-
-  El orden de cada ser es el número del verso de la Teogonía en que aparece por primera vez
-  dentro del relato genealógico. Los decimales desempatan seres del mismo verso (117, 117.1...).
+  El orden de cada ser es el número del verso de la Teogonía en que se narra su nacimiento u origen;
+  si el poema no lo narra, el verso de su primera mención. Las Musas, cantadas en el proemio (vv. 1-115),
+  abren el recorrido. Los decimales desempatan seres del mismo verso (117, 117.1...) en el orden en que se nombran.
 tema:
   piedra: '#e9e4da'
   acento: '#b08d57'
@@ -25,8 +26,8 @@ categorias:
     nombre: Titanes
     descripcion: Los doce hijos de Gea y Urano y su generación.
   - id: olimpico
-    nombre: Olímpicos
-    descripcion: Los dioses que reinan desde el Olimpo tras la Titanomaquia.
+    nombre: Olímpicos y Crónidas
+    descripcion: Los hijos de Crono y Rea y los grandes dioses que reinan desde el Olimpo tras la Titanomaquia.
   - id: deidad
     nombre: Deidades
     descripcion: Dioses y diosas que no son titanes ni olímpicos.
@@ -42,11 +43,14 @@ categorias:
   - id: monstruo
     nombre: Monstruos
     descripcion: Criaturas como Tifón, Equidna, la Hidra o la Quimera.
+  - id: criatura
+    nombre: Criaturas
+    descripcion: Seres fabulosos que no son monstruos, como Pegaso, Crisaor o el centauro Quirón.
   - id: mortal
     nombre: Mortales y héroes
     descripcion: Pandora, los héroes y los mortales que se unen a los dioses.
 
-# Salas en el orden del poema. Pendiente de confirmar en el Punto 3 (ver memories/mitologias/griega.md).
+# Salas en el orden del poema. Cada ser cae en la sala cuyo rango contiene su `orden`.
 salas:
   - id: proemio
     nombre: Las Musas del Helicón
