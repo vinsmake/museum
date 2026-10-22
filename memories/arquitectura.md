@@ -16,7 +16,9 @@ src/
     nordica/
       mitologia.yaml                 # estado: proximamente (sin seres aún)
   lib/mitologias.ts                  # ÚNICA puerta de acceso a los datos + validación
+  estatuas/                          # generador procedural de estatuas (ver estatuas.md)
   pages/index.astro                  # portada provisional (lista de comprobación)
+  pages/taller/[mitologia].astro     # taller para revisar estatuas (/taller/griega)
 memories/                            # documentación y contexto (este directorio)
 ```
 

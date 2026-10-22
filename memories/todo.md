@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 3 terminado. Esperando aprobación del usuario para iniciar el Punto 4.**
+> Estado: **Punto 4 terminado. Esperando aprobación del usuario para iniciar el Punto 5.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -71,7 +71,9 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Seres de otras fuentes (Homero, Apolodoro, etc.) **no** entran en esta fase; se dejan anotados como ampliación futura.
 - Memoria: `memories/mitologias/griega.md` (fuentes, criterio de orden, lista de salas, decisiones dudosas).
 
-### [ ] Punto 4. Generador procedural de estatuas (Three.js)
+### [x] Punto 4. Generador procedural de estatuas (Three.js)
+- Hecho: `src/estatuas/` + taller en `/taller/griega`. Las 313 estatuas se construyen sin errores.
+  Pendiente: revisar a ojo monstruos, híbridos y ríos (ver `memories/estatuas.md`).
 - Figura base de mármol (cuerpo, pose, drapeado) parametrizada por `tipo` y `apariencia`.
 - Atributos según el ser: rayo (Zeus), tridente (Poseidón), égida/lechuza (Atenea), hoz (Crono), lira (Apolo), etc.
 - Formas especiales para seres no humanos (Hidra, Equidna, Cíclopes de un ojo, Hecatónquiros con muchos brazos, Pegaso...).
@@ -120,3 +122,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-22: Punto 3 terminado. 313 seres de la Teogonía (vv. 1-1022) generados una vez desde tablas; ahora los
   `.md` son la fuente de verdad. Build OK con validación. Se añadió la categoría `criatura`. Los valores de
   `estatua.figura` y `estatua.atributos` que debe cubrir el Punto 4 están en `memories/esquema-datos.md`.
+- 2026-10-22: Punto 4 terminado. Three.js 0.186.1 (instalado con el servicio npm de Docker). Generador en
+  `src/estatuas/` (10 figuras, ~110 atributos), pedestal con placa, taller en `/taller/griega`. Comprobación masiva
+  en Node: 0 fallos. Solo Zeus revisado visualmente (la extensión de Chrome se desconectó). Detalle en `memories/estatuas.md`.

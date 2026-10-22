@@ -8,6 +8,7 @@ corre dentro de contenedores con Docker Compose.
 |---|---|---|
 | Node | `26.12.1-alpine` (era la última y coincidía con el tag `current`) | `Dockerfile` (`FROM`) |
 | Astro | `7.4.2` | `package.json` / `package-lock.json` |
+| Three.js | `0.186.1` (+ `@types/three` 0.186.0) | `package.json` |
 | Docker | 29.9.2, Compose v5.6.0 (Docker Desktop en Windows) | host |
 
 ### Actualizar Node a la versión más reciente

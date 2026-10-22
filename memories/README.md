@@ -25,7 +25,7 @@ porque las sesiones cambian y el contexto se pierde.
 | `arquitectura.md` | Estructura multi-mitología | listo |
 | `esquema-datos.md` | Campos de cada ser | listo |
 | `mitologias/griega.md` | Fuentes, criterio de orden, salas, nombres repetidos y pasajes ambiguos | listo |
-| `estatuas.md` | Generador procedural de estatuas | pendiente (Punto 4) |
+| `estatuas.md` | Generador de estatuas, figuras, atributos, taller | listo |
 | `guias/agregar-ser.md` | Cómo añadir un ser | pendiente (Punto 8) |
 | `guias/modificar-datos.md` | Cómo editar datos | pendiente (Punto 8) |
 | `guias/agregar-mitologia.md` | Cómo añadir una mitología nueva | pendiente (Punto 8) |
