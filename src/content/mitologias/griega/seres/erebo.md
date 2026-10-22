@@ -13,8 +13,5 @@ aparicion: { obra: Teogonía, versos: "123" }
 citas:
   - versos: "123"
     texto: "Del Caos nacieron Érebo y la negra Noche."
-estatua:
-  figura: abstracta
-  genero: masculino
 ---
 Hijo del Caos, es la oscuridad de las profundidades. Unido a su hermana Nix engendra a Éter y a Hémera, la luz y el día.

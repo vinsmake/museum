@@ -17,10 +17,5 @@ otrasFuentes:
 citas:
   - versos: "954-955"
     texto: "Dichoso él, que tras cumplir su gran obra entre los inmortales habita sin daño y sin vejez todos los días."
-estatua:
-  figura: humana
-  genero: masculino
-  escala: 1.15
-  atributos: ["maza", "piel-leon"]
 ---
 Hijo de Zeus y Alcmena. En la Teogonía mata a Gerión, a la Hidra, al León de Nemea y al águila de Prometeo. Terminados sus trabajos, vive feliz en el Olimpo, sin dolor ni vejez, casado con Hebe.

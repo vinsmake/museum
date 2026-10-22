@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Ardesco"]
 aparicion: { obra: Teogonía, versos: "345" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Ardesco, río de Tracia.

@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "249" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 Nereida de las costas.

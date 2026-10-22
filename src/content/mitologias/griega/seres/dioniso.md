@@ -13,9 +13,5 @@ dominio: ["el vino", "la fiesta"]
 aparicion: { obra: Teogonía, versos: "940-942" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "947-949" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["tirso", "racimo", "copa"]
 ---
 Hijo de Zeus y la mortal Sémele: inmortal hijo de una mortal, aunque ahora ambos son dioses. Toma por esposa a la rubia Ariadna, a quien Zeus hace inmortal.

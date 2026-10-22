@@ -13,9 +13,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "351" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "287-288" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide "de bella corriente". Unida a Crisaor es madre de Gerión.

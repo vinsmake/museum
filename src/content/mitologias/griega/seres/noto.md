@@ -10,9 +10,5 @@ grupo: vientos
 padres: ["astreo", "eos"]
 dominio: ["el viento del sur"]
 aparicion: { obra: Teogonía, versos: "380" }
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas", "cantaro"]
 ---
 Viento del sur, que trae las lluvias. Hijo de Eos y Astreo.

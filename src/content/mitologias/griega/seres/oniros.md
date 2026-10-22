@@ -11,9 +11,5 @@ colectivo: true
 padres: ["nix"]
 dominio: ["los sueños"]
 aparicion: { obra: Teogonía, versos: "212" }
-estatua:
-  figura: grupo
-  genero: neutro
-  atributos: ["alas"]
 ---
 La "tribu de los Sueños" que la Noche engendra sin unirse a nadie.

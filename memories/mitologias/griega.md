@@ -77,7 +77,7 @@ primordial 11 · raza 7 · criatura 4.
 - **Nereidas**: Hesíodo dice cincuenta pero nombra cincuenta y una. Se incluyen todas.
 - **Pandora**: no recibe nombre en la Teogonía; se toma de *Trabajos y días* v. 81 (en `otrasFuentes`).
 - **Telégono** (v. 1014): verso considerado interpolado; se incluye con una nota.
-- **Cerbero**: Hesíodo le da cincuenta cabezas (la estatua puede mostrar tres por legibilidad).
+- **Cerbero**: Hesíodo le da cincuenta cabezas; las obras conocidas lo muestran con tres.
 - **Dione**: en Hesíodo es una oceánide, no la madre de Afrodita.
 - **Faetón** (v. 987): hijo de Eos y Céfalo, no el hijo de Helios.
 - **Hímero** y el **Águila** no tienen padres en el poema: se usa `origen`.

@@ -11,8 +11,5 @@ padres: ["gea", "urano"]
 parejas: ["hiperion"]
 dominio: ["el brillo", "la vista"]
 aparicion: { obra: Teogonía, versos: "135" }
-estatua:
-  figura: humana
-  genero: femenino
 ---
 Titánide, esposa de Hiperión y madre de Helios, Selene y Eos.

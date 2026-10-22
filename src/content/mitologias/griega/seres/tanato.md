@@ -12,9 +12,5 @@ dominio: ["la muerte"]
 aparicion: { obra: Teogonía, versos: "212" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "758-766" }
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas", "antorcha-invertida"]
 ---
 La Muerte, hermano gemelo del Sueño. Tiene corazón de hierro y alma de bronce despiadada; lo odian hasta los inmortales.

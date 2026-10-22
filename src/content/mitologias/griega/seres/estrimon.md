@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Estrimón"]
 aparicion: { obra: Teogonía, versos: "339" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Estrimón, río de Tracia.

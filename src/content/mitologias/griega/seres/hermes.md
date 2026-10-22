@@ -10,9 +10,5 @@ categoria: olimpico
 padres: ["zeus", "maya"]
 dominio: ["los mensajes", "los caminos", "el comercio"]
 aparicion: { obra: Teogonía, versos: "938-939" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["caduceo", "petaso", "sandalias-aladas"]
 ---
 Hijo de Zeus y Maya, glorioso heraldo de los inmortales.

@@ -10,9 +10,5 @@ grupo: harpias
 padres: ["taumante", "electra"]
 dominio: ["las ráfagas de viento"]
 aparicion: { obra: Teogonía, versos: "267" }
-estatua:
-  figura: alada
-  genero: femenino
-  atributos: ["garras", "alas"]
 ---
 Harpía "de vuelo rápido", hermana de Aelo y de Iris.

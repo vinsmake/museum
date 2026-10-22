@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Nilo"]
 aparicion: { obra: Teogonía, versos: "338" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Nilo, primer río de la lista de los hijos de Océano y Tetis.

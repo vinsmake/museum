@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Escamandro"]
 aparicion: { obra: Teogonía, versos: "345" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El divino Escamandro, río de Troya.

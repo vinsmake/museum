@@ -12,9 +12,5 @@ dominio: ["la suerte"]
 aparicion: { obra: Teogonía, versos: "218" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "904-906" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["vara-medir"]
 ---
 Moira que asigna a cada mortal su lote. Doble genealogía en la Teogonía: hija de la Noche o de Zeus y Temis.

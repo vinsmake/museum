@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Caico"]
 aparicion: { obra: Teogonía, versos: "343" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Caico "de bella corriente", río de Misia.

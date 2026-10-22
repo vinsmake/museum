@@ -11,8 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["el dolor"]
 aparicion: { obra: Teogonía, versos: "227" }
-estatua:
-  figura: grupo
-  genero: neutro
 ---
 Los Dolores que hacen llorar.

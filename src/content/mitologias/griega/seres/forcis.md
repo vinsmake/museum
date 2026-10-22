@@ -11,9 +11,5 @@ padres: ["ponto", "gea"]
 parejas: ["ceto"]
 dominio: ["los peligros ocultos del mar"]
 aparicion: { obra: Teogonía, versos: "237" }
-estatua:
-  figura: hibrida
-  genero: masculino
-  atributos: ["cola-pez", "pinzas"]
 ---
 Hijo de Ponto y Gea. Con su hermana Ceto engendra a las Grayas, las Gorgonas y la serpiente guardiana de las manzanas de oro.

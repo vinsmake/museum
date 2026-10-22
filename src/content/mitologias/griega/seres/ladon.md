@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Ladón"]
 aparicion: { obra: Teogonía, versos: "344" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Ladón, río de Arcadia. No confundir con la serpiente de las Hespérides.

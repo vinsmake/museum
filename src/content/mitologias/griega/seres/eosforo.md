@@ -10,9 +10,5 @@ categoria: deidad
 padres: ["astreo", "eos"]
 dominio: ["el lucero de la mañana"]
 aparicion: { obra: Teogonía, versos: "381" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["antorcha", "estrella"]
 ---
 El Lucero del alba, el planeta Venus al amanecer. Hijo de Eos.

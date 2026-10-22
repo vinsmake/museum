@@ -11,9 +11,5 @@ colectivo: true
 padres: ["astreo", "eos"]
 dominio: ["las estrellas"]
 aparicion: { obra: Teogonía, versos: "382" }
-estatua:
-  figura: astral
-  genero: neutro
-  atributos: ["estrella"]
 ---
 Las estrellas brillantes con que se corona el cielo, hijas de Eos y Astreo.

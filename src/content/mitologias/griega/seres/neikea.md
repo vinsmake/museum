@@ -11,8 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["las disputas"]
 aparicion: { obra: Teogonía, versos: "229" }
-estatua:
-  figura: grupo
-  genero: neutro
 ---
 Las Disputas.

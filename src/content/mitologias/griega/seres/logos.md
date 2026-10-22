@@ -11,8 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["las palabras engañosas"]
 aparicion: { obra: Teogonía, versos: "229" }
-estatua:
-  figura: grupo
-  genero: masculino
 ---
 Las Palabras que enredan y confunden.

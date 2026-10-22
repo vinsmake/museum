@@ -10,9 +10,5 @@ categoria: olimpico
 padres: ["zeus", "leto"]
 dominio: ["la música", "la profecía", "la luz"]
 aparicion: { obra: Teogonía, versos: "918-920" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["lira", "arco", "corona-laurel"]
 ---
 Hijo de Zeus y Leto, gemelo de Ártemis: la descendencia más deseable de todos los hijos del cielo.

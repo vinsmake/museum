@@ -15,9 +15,5 @@ aparicion: { obra: Teogonía, versos: "295-305" }
 citas:
   - versos: "298-300"
     texto: "Mitad ninfa de ojos vivos y bellas mejillas, mitad serpiente monstruosa, terrible y enorme."
-estatua:
-  figura: hibrida
-  genero: femenino
-  atributos: ["cola-serpiente"]
 ---
 Mitad ninfa de ojos vivos y bellas mejillas, mitad serpiente enorme y terrible. Vive en una cueva en Arima, bajo la tierra. Unida a Tifón, es madre de Orto, Cerbero, la Hidra y, quizá, la Quimera.

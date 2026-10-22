@@ -13,9 +13,5 @@ aparicion: { obra: Teogonía, versos: "120-122" }
 citas:
   - versos: "120-122"
     texto: "Y Eros, el más hermoso entre los dioses inmortales, que afloja los miembros y doma en el pecho el sentido y la prudente voluntad de todos los dioses y todos los hombres."
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas"]
 ---
 En Hesíodo, Eros no es todavía el niño hijo de Afrodita de la tradición posterior, sino una fuerza primordial: el deseo que hace posible que los dioses se unan y engendren. Más adelante acompaña a Afrodita desde su nacimiento.

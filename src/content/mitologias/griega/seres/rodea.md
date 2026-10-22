@@ -10,9 +10,5 @@ grupo: oceanides
 padres: ["oceano", "tetis"]
 dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "351" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide "de las rosas".

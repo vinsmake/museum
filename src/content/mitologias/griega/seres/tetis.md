@@ -13,9 +13,5 @@ dominio: ["las aguas dulces"]
 aparicion: { obra: Teogonía, versos: "136" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "337-370" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Titánide esposa de Océano, madre de los ríos y de las Oceánides. No confundir con la nereida Tetis, madre de Aquiles.

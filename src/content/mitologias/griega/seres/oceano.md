@@ -13,9 +13,5 @@ dominio: ["el río que rodea la tierra"]
 aparicion: { obra: Teogonía, versos: "133" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "337-370" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["olas", "serpiente-marina"]
 ---
 El mayor de los Titanes. Es el río que rodea toda la tierra. Con Tetis engendra los ríos y las tres mil Oceánides.

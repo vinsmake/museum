@@ -13,9 +13,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "358" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "907-911" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide de amable belleza. Unida a Zeus es madre de las tres Cárites.

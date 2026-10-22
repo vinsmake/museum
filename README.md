@@ -1,6 +1,6 @@
 # Museo Mitológico Interactivo
 
-Museo web con estatuas de los seres mitológicos, en orden cronológico según su fuente canónica
+Museo web con obras reales (esculturas, vasijas, pinturas) de los seres mitológicos, en recorrido cronológico según su fuente canónica
 (griega: *Teogonía* de Hesíodo). Hecho con Astro y ejecutado solo con Docker Compose.
 
 ```sh

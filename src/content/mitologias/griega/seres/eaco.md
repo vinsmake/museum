@@ -10,9 +10,5 @@ origen: "Mortal; la Teogonía no da su origen (la tradición lo hace hijo de Zeu
 parejas: ["psamate"]
 dominio: ["Egina"]
 aparicion: { obra: Teogonía, versos: "1005" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["cetro"]
 ---
 Héroe unido a la nereida Psámate, padre de Foco.

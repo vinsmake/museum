@@ -10,9 +10,5 @@ categoria: titan
 padres: ["hiperion", "tea"]
 dominio: ["la luna"]
 aparicion: { obra: Teogonía, versos: "371" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["creciente-lunar"]
 ---
 La brillante Luna, hija de Hiperión y Tea.

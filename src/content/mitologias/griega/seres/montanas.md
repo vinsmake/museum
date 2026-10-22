@@ -11,8 +11,5 @@ colectivo: true
 padres: ["gea"]
 dominio: ["las montañas"]
 aparicion: { obra: Teogonía, versos: "129-130" }
-estatua:
-  figura: grupo
-  genero: neutro
 ---
 Las grandes Montañas, morada grata de las Ninfas que viven en los valles boscosos. Gea las engendra sola.

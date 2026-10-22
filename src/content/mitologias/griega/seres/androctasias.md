@@ -11,9 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["el homicidio"]
 aparicion: { obra: Teogonía, versos: "228" }
-estatua:
-  figura: grupo
-  genero: femenino
-  atributos: ["espada"]
 ---
 Los Homicidios.

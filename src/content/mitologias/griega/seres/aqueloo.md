@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Aqueloo"]
 aparicion: { obra: Teogonía, versos: "340" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Aqueloo "de remolinos de plata", el mayor río de Grecia.

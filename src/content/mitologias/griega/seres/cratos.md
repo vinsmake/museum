@@ -10,9 +10,5 @@ categoria: personificacion
 padres: ["palante", "estigia"]
 dominio: ["el poder"]
 aparicion: { obra: Teogonía, versos: "385" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["cetro"]
 ---
 El Poder, que nunca se aparta de Zeus.

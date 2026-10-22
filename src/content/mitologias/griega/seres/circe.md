@@ -10,9 +10,5 @@ padres: ["helios", "perseis"]
 parejas: ["odiseo"]
 dominio: ["la magia"]
 aparicion: { obra: Teogonía, versos: "956-957; 1011-1014" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["copa", "vara"]
 ---
 Hija de Helios y Perseis. Unida a Odiseo es madre de Agrio y Latino.

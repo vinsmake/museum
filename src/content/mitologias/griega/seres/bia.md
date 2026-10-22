@@ -10,8 +10,5 @@ categoria: personificacion
 padres: ["palante", "estigia"]
 dominio: ["la fuerza"]
 aparicion: { obra: Teogonía, versos: "385" }
-estatua:
-  figura: humana
-  genero: femenino
 ---
 La Fuerza, hermana del Poder, compañera de Zeus.

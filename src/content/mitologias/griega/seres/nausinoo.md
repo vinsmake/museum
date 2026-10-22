@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["odiseo", "calipso"]
 dominio: ["la navegación"]
 aparicion: { obra: Teogonía, versos: "1017" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["remo"]
 ---
 Hijo de Odiseo y Calipso.

@@ -10,9 +10,5 @@ origen: "Héroe mortal; la Teogonía no da su origen."
 parejas: ["tetis-nereida"]
 dominio: ["Ftía"]
 aparicion: { obra: Teogonía, versos: "1006" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["lanza"]
 ---
 Héroe mortal unido a la nereida Tetis, padre de Aquiles.

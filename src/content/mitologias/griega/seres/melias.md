@@ -11,9 +11,5 @@ padres: ["gea", "urano"]
 origen: "Nacen de la sangre de Urano derramada sobre Gea."
 dominio: ["los fresnos"]
 aparicion: { obra: Teogonía, versos: "187" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["rama-fresno"]
 ---
 Ninfas de los fresnos, nacidas también de la sangre de Urano. De su madera se hacían las lanzas.

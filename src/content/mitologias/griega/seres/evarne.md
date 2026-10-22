@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "259" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 Nereida de figura amable y belleza sin defecto.

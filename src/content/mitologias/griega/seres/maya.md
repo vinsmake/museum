@@ -11,9 +11,5 @@ padres: ["atlas"]
 parejas: ["zeus"]
 dominio: ["la maternidad"]
 aparicion: { obra: Teogonía, versos: "938-939" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["velo"]
 ---
 Hija de Atlas. Sube al lecho sagrado de Zeus y da a luz al glorioso Hermes, heraldo de los inmortales.

@@ -15,9 +15,5 @@ aparicion: { obra: Teogonía, versos: "188-200" }
 citas:
   - versos: "195-197"
     texto: "Los dioses y los hombres la llaman Afrodita, porque se crió en la espuma, y Citerea, porque arribó a Citera."
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha", "paloma"]
 ---
 Los genitales de Urano, arrojados al mar, forman una espuma blanca de la que nace una doncella. Llega primero a Citera y después a Chipre. Por eso se llama Afrodita, Citerea y Ciprogenia. Eros e Hímero la acompañan desde entonces.

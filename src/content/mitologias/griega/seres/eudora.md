@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "244" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 Nereida "de buenos dones". Una oceánide lleva el mismo nombre.

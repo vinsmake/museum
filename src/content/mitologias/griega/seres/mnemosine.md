@@ -14,9 +14,5 @@ aparicion: { obra: Teogonía, versos: "135" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "53-62" }
   - { obra: "Teogonía", versos: "915-917" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["pergamino"]
 ---
 La Memoria. Se une a Zeus durante nueve noches en Pieria y da a luz a las nueve Musas.

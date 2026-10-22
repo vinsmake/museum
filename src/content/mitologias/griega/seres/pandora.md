@@ -15,9 +15,5 @@ otrasFuentes:
 citas:
   - versos: "570-572"
     texto: "Al punto fabricó, a cambio del fuego, un mal para los hombres: el ilustre Cojo modeló de tierra una figura semejante a una doncella pudorosa."
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["tinaja", "corona"]
 ---
 Castigo de Zeus por el robo del fuego. Hefesto la modela de tierra a semejanza de una doncella, Atenea la viste y la adorna, y le ponen una corona de oro trabajada. De ella desciende la raza de las mujeres. En la Teogonía no recibe nombre; se llama Pandora en *Trabajos y días* (v. 81).

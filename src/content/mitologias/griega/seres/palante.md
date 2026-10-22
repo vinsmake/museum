@@ -11,9 +11,5 @@ padres: ["crio", "euribia"]
 parejas: ["estigia"]
 dominio: ["la guerra"]
 aparicion: { obra: Teogonía, versos: "376" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["lanza"]
 ---
 Hijo de Crío y Euribia. Con la Estigia engendra a Zelo, Nike, Cratos y Bía.

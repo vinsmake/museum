@@ -10,9 +10,5 @@ categoria: personificacion
 padres: ["eris"]
 dominio: ["el juramento"]
 aparicion: { obra: Teogonía, versos: "231-232" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["cetro"]
 ---
 El Juramento, que más daña a los hombres cuando alguno jura en falso a sabiendas.

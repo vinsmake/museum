@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["cadmo", "harmonia"]
 dominio: ["Tebas"]
 aparicion: { obra: Teogonía, versos: "976" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["tirso"]
 ---
 Hija de Cadmo y Harmonía. No confundir con la nereida Ágave.

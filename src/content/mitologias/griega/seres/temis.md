@@ -13,9 +13,5 @@ dominio: ["el orden", "la justicia"]
 aparicion: { obra: Teogonía, versos: "135" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "901-906" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["balanza"]
 ---
 Titánide del orden justo. Segunda esposa de Zeus, de quien tiene a las Horas.

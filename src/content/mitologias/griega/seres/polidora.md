@@ -10,9 +10,5 @@ grupo: oceanides
 padres: ["oceano", "tetis"]
 dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "354" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 La hermosa Polidora, "de muchos dones".

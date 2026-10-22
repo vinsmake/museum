@@ -9,9 +9,5 @@ categoria: mortal
 origen: "Héroe mortal. La Teogonía no narra su nacimiento (la tradición lo hace hijo de Zeus y Dánae)."
 dominio: ["el heroísmo"]
 aparicion: { obra: Teogonía, versos: "280" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["espada", "cabeza-medusa"]
 ---
 Héroe que corta la cabeza de Medusa. Hesíodo solo lo menciona en este episodio.

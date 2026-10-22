@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "258" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 Nereida. La hija de Cadmo lleva el mismo nombre.

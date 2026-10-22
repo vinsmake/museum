@@ -14,10 +14,5 @@ aparicion: { obra: Teogonía, versos: "243" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "254" }
   - { obra: "Teogonía", versos: "930-933" }
-estatua:
-  figura: humana
-  genero: femenino
-  escala: 1.1
-  atributos: ["tridente", "corona"]
 ---
 Nereida esposa de Poseidón y madre de Tritón. Con Cimódoce y Cimatolege calma las olas y los vientos.

@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Plan replanteado (2026-10-22): museo 2D con imágenes reales. Esperando aprobación del usuario para iniciar el Punto 5.**
+> Estado: **Punto 5 terminado. Esperando aprobación del usuario para iniciar el Punto 6.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -51,7 +51,9 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   las estatuas generadas eran figuras estilizadas, no estatuas reales. Se elimina en el Punto 5.
   Si algún día se quiere recuperar, está en el historial de git (`src/estatuas/`, `memories/estatuas.md`).
 
-### [ ] Punto 5. Retirar el 3D y preparar el esquema de imágenes
+### [x] Punto 5. Retirar el 3D y preparar el esquema de imágenes
+- Hecho. Cambio respecto al plan: las imágenes van en `src/content/mitologias/<mitologia>/imagenes/` (junto a los
+  datos), no en `src/assets/`. Campos extra: `fotografo`, `alt`, `enfoque`.
 - Borrar `src/estatuas/`, `src/pages/taller/`, `memories/estatuas.md`; desinstalar `three` y `@types/three`
   con `docker compose run --rm npm uninstall ...`.
 - Quitar el bloque `estatua` del esquema y de los 313 `.md`.
@@ -115,3 +117,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-22: Punto 4 terminado (Three.js, `src/estatuas/`, taller). Luego descartado por el usuario en el replanteo.
 - 2026-10-22: Replanteo del plan: Puntos 5-10 nuevos (retirar 3D, imágenes de Commons, recorrido 2D, diseño,
   guías, publicación).
+- 2026-10-22: Punto 5 terminado. Eliminados `src/estatuas/`, el taller, `memories/estatuas.md` y Three.js
+  (desinstalado con el servicio npm). Quitado `estatua` de los 313 `.md` y del esquema. Nuevo campo `imagenes`
+  con `image()` (probado: imagen válida compila; ruta inexistente falla con `ImageNotFound`). Nueva memoria
+  `memories/imagenes.md`.

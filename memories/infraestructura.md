@@ -8,7 +8,6 @@ corre dentro de contenedores con Docker Compose.
 |---|---|---|
 | Node | `26.12.1-alpine` (era la última y coincidía con el tag `current`) | `Dockerfile` (`FROM`) |
 | Astro | `7.4.2` | `package.json` / `package-lock.json` |
-| Three.js | `0.186.1` (+ `@types/three` 0.186.0) | `package.json` |
 | Docker | 29.9.2, Compose v5.6.0 (Docker Desktop en Windows) | host |
 
 ### Actualizar Node a la versión más reciente
@@ -42,7 +41,7 @@ docker compose logs -f dev               # ver logs
 docker compose down                      # detener
 docker compose run --rm build            # build estático -> ./dist
 docker compose run --rm --service-ports preview   # probar el build
-docker compose run --rm npm install three         # añadir una dependencia
+docker compose run --rm npm install <paquete>     # añadir una dependencia
 docker compose run --rm npm install               # reinstalar según package.json
 docker compose run --rm --entrypoint npx npm astro add <integración>
 docker compose build                     # reconstruir la imagen (tras cambiar Dockerfile)

@@ -11,9 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["la matanza"]
 aparicion: { obra: Teogonía, versos: "228" }
-estatua:
-  figura: grupo
-  genero: masculino
-  atributos: ["espada"]
 ---
 Las Matanzas.

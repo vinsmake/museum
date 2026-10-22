@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["anquises", "afrodita"]
 dominio: ["Troya"]
 aparicion: { obra: Teogonía, versos: "1008-1010" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["casco", "escudo"]
 ---
 Hijo de Afrodita y del héroe Anquises, nacido en las cumbres del Ida.

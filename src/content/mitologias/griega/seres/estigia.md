@@ -15,10 +15,5 @@ aparicion: { obra: Teogonía, versos: "361" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "383-403" }
   - { obra: "Teogonía", versos: "775-806" }
-estatua:
-  figura: humana
-  genero: femenino
-  escala: 1.1
-  atributos: ["cantaro"]
 ---
 La más importante de las Oceánides. Con Palante engendra a Zelo, Nike, Cratos y Bía, y es la primera en acudir con ellos en ayuda de Zeus. Por eso Zeus hace de su agua el gran juramento de los dioses: quien jura en falso por ella queda un año sin aliento.

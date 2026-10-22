@@ -10,9 +10,5 @@ grupo: horas
 padres: ["zeus", "temis"]
 dominio: ["el buen gobierno"]
 aparicion: { obra: Teogonía, versos: "901-903" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cetro"]
 ---
 Una de las tres Horas, hijas de Zeus y Temis, que vigilan los trabajos de los hombres mortales.

@@ -11,9 +11,5 @@ padres: ["zeus", "hera"]
 parejas: ["afrodita"]
 dominio: ["la guerra"]
 aparicion: { obra: Teogonía, versos: "922" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["casco", "lanza", "escudo"]
 ---
 Hijo de Zeus y Hera. Unido a Afrodita es padre de Fobo, Deimo y Harmonía.

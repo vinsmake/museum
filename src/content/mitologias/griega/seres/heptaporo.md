@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Heptáporo"]
 aparicion: { obra: Teogonía, versos: "341" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Heptáporo, "el de siete vados", río de la Tróade.

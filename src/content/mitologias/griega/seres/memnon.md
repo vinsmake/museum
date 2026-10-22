@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["titono", "eos"]
 dominio: ["Etiopía"]
 aparicion: { obra: Teogonía, versos: "984-985" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["casco", "lanza"]
 ---
 Hijo de Eos y Titono, de casco de bronce, rey de los etíopes.

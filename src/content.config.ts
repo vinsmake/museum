@@ -2,6 +2,7 @@
 //
 // src/content/mitologias/<mitologia>/mitologia.yaml   -> colección `mitologias` (id: <mitologia>)
 // src/content/mitologias/<mitologia>/seres/<ser>.md   -> colección `seres`      (id: <mitologia>/<ser>)
+// src/content/mitologias/<mitologia>/imagenes/*.jpg   -> imágenes de obras, referenciadas desde `imagenes`
 //
 // Las relaciones entre seres (padres, parejas, sala, categoría) se validan en src/lib/mitologias.ts,
 // porque dependen de la mitología a la que pertenece cada ser.
@@ -36,8 +37,8 @@ const mitologias = defineCollection({
     }),
     criterioOrden: z.string().optional(), // cómo se decide el orden cronológico
     tema: z.object({
-      piedra: z.string(), // color base de las estatuas
-      acento: z.string(), // color de acento de la sala
+      piedra: z.string(), // color del mármol de las salas
+      acento: z.string(), // color de acento (marcos, cartelas)
     }),
     categorias: z
       .array(z.object({ id: z.string(), nombre: z.string(), descripcion: z.string().optional() }))
@@ -65,7 +66,7 @@ const seres = defineCollection({
       return `${mitologia}/${resto.at(-1)}`;
     },
   }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     nombre: z.string(), // nombre en español: "Gea"
     nombreOriginal: z.string().optional(), // "Γαῖα"
     transliteracion: z.string().optional(), // "Gaîa"
@@ -94,15 +95,23 @@ const seres = defineCollection({
       )
       .default([]),
 
-    // Parámetros de la estatua (generador del Punto 4)
-    estatua: z
-      .object({
-        figura: z.string().default('humana'), // humana, serpentina, alada, monstruo, abstracta...
-        genero: z.enum(['femenino', 'masculino', 'neutro']).default('neutro'),
-        escala: z.number().default(1),
-        atributos: z.array(z.string()).default([]), // "rayo", "tridente", "hoz"...
-      })
-      .prefault({}),
+    // Obras reales que representan al ser (la primera es la principal). Ver memories/imagenes.md
+    imagenes: z
+      .array(
+        z.object({
+          archivo: image(), // ruta relativa al .md: "../imagenes/zeus-1.jpg"
+          obra: z.string(), // "Zeus de Otrícoli"
+          autor: z.string().optional(), // escultor o pintor ("Anónimo" si no se conoce)
+          fecha: z.string().optional(), // "siglo IV a. C."
+          ubicacion: z.string().optional(), // museo o lugar: "Museos Vaticanos"
+          fotografo: z.string().optional(), // autor de la foto en Commons, si la licencia lo exige
+          licencia: z.string(), // "Dominio público", "CC BY-SA 4.0"...
+          fuente: z.url(), // página del archivo en Wikimedia Commons
+          alt: z.string().optional(), // texto alternativo; si falta se usa "<obra> (<nombre>)"
+          enfoque: z.string().optional(), // object-position para recortes: "50% 20%"
+        }),
+      )
+      .default([]),
   }),
 });
 

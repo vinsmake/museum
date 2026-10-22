@@ -13,9 +13,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "349" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "265-269" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide "brillante como el ámbar". Esposa de Taumante y madre de Iris y las Harpías.

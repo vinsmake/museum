@@ -11,9 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["la batalla"]
 aparicion: { obra: Teogonía, versos: "228" }
-estatua:
-  figura: grupo
-  genero: femenino
-  atributos: ["escudo"]
 ---
 Las Batallas.

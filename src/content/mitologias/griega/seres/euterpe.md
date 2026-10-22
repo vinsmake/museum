@@ -10,9 +10,5 @@ grupo: musas
 padres: ["zeus", "mnemosine"]
 dominio: ["la música", "el deleite"]
 aparicion: { obra: Teogonía, versos: "77" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["aulos"]
 ---
 Su nombre significa "la que deleita". La tradición posterior la asoció a la flauta doble (*aulós*) y a la poesía lírica.

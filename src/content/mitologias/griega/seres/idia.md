@@ -13,9 +13,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "352" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "958-962" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide "la que sabe". Esposa de Eetes y madre de Medea.

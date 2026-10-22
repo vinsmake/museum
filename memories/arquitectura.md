@@ -13,12 +13,12 @@ src/
       seres/                         # un .md por ser (se permiten subcarpetas)
         caos.md
         gea.md
+      imagenes/                      # fotos de obras reales (ver imagenes.md)
+        zeus-1.jpg
     nordica/
       mitologia.yaml                 # estado: proximamente (sin seres aún)
   lib/mitologias.ts                  # ÚNICA puerta de acceso a los datos + validación
-  estatuas/                          # generador procedural de estatuas (ver estatuas.md)
   pages/index.astro                  # portada provisional (lista de comprobación)
-  pages/taller/[mitologia].astro     # taller para revisar estatuas (/taller/griega)
 memories/                            # documentación y contexto (este directorio)
 ```
 
@@ -49,4 +49,5 @@ memories/                            # documentación y contexto (este directori
 - **El orden cronológico es explícito** (`orden`) y no se deduce del nombre del archivo. En la griega, `orden`
   = verso de primera aparición en la Teogonía (decimales para desempatar). Ver `mitologias/griega.md`.
 - **Markdown por ser**: el frontmatter son los datos y el cuerpo es la descripción larga (se renderiza con `render()`).
+- **Imágenes junto a los datos** (`<mitologia>/imagenes/`), validadas con `image()`: una ruta rota detiene el build.
 - `z` se importa de `astro/zod` (el de `astro:content` está obsoleto y desaparece en Astro 8).

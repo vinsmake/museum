@@ -10,9 +10,5 @@ categoria: personificacion
 padres: ["ares", "afrodita"]
 dominio: ["el terror"]
 aparicion: { obra: Teogonía, versos: "934" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["casco", "escudo"]
 ---
 El Terror, hijo de Ares y Afrodita.

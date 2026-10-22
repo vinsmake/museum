@@ -10,9 +10,5 @@ padres: ["cadmo", "harmonia"]
 parejas: ["zeus"]
 dominio: ["Tebas"]
 aparicion: { obra: Teogonía, versos: "940-942; 976" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["corona"]
 ---
 Hija de Cadmo y Harmonía. Unida a Zeus da a luz a Dioniso, y al final es divinizada.

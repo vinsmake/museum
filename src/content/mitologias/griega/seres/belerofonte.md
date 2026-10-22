@@ -9,9 +9,5 @@ categoria: mortal
 origen: "Héroe mortal; la Teogonía solo lo menciona."
 dominio: ["el heroísmo"]
 aparicion: { obra: Teogonía, versos: "325" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["lanza", "caballo"]
 ---
 Héroe que, montado en Pegaso, mata a la Quimera.

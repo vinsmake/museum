@@ -10,9 +10,5 @@ categoria: personificacion
 padres: ["eris"]
 dominio: ["el olvido"]
 aparicion: { obra: Teogonía, versos: "227" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 El Olvido, hija de la Discordia.

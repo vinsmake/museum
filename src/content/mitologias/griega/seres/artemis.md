@@ -10,9 +10,5 @@ categoria: olimpico
 padres: ["zeus", "leto"]
 dominio: ["la caza", "los animales salvajes"]
 aparicion: { obra: Teogonía, versos: "918" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["arco", "ciervo"]
 ---
 Hija de Zeus y Leto, hermana de Apolo, diosa flechadora.

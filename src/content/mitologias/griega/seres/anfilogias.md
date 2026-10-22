@@ -11,8 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["los altercados"]
 aparicion: { obra: Teogonía, versos: "229" }
-estatua:
-  figura: grupo
-  genero: femenino
 ---
 Los Altercados.

@@ -15,9 +15,5 @@ aparicion: { obra: Teogonía, versos: "319-325" }
 citas:
   - versos: "321-322"
     texto: "Por delante león, por detrás serpiente, en medio cabra, y exhalaba el terrible ardor del fuego ardiente."
-estatua:
-  figura: monstruo
-  genero: femenino
-  atributos: ["tres-cabezas", "leon", "cabra", "cola-serpiente"]
 ---
 Monstruo que exhala fuego indomable, terrible, grande y veloz: tiene tres cabezas, de león, de cabra y de serpiente. Belerofonte y Pegaso la matan.

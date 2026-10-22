@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "251" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 La encantadora Hipótoe, "veloz como un caballo".

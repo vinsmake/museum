@@ -10,9 +10,5 @@ grupo: vientos
 padres: ["astreo", "eos"]
 dominio: ["el viento del norte"]
 aparicion: { obra: Teogonía, versos: "379" }
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas", "caracola"]
 ---
 Viento del norte, de rápido curso. Hijo de Eos y Astreo.

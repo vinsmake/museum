@@ -11,9 +11,5 @@ grupo: vientos
 padres: ["astreo", "eos"]
 dominio: ["el viento del oeste"]
 aparicion: { obra: Teogonía, versos: "378-380" }
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas", "flores"]
 ---
 Viento del oeste, que despeja el cielo. Hijo de Eos y Astreo.

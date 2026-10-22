@@ -9,8 +9,5 @@ categoria: personificacion
 padres: ["eris"]
 dominio: ["el hambre"]
 aparicion: { obra: Teogonía, versos: "227" }
-estatua:
-  figura: humana
-  genero: masculino
 ---
 El Hambre, hijo de la Discordia.

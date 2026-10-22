@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["cadmo", "harmonia"]
 dominio: ["Tebas"]
 aparicion: { obra: Teogonía, versos: "975-976" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["velo"]
 ---
 Hija de Cadmo y Harmonía. La tradición la convierte después en la diosa marina Leucótea.

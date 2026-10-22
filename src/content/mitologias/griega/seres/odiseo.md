@@ -11,9 +11,5 @@ origen: "Héroe mortal; la Teogonía no da su origen."
 parejas: ["circe", "calipso"]
 dominio: ["la astucia", "el viaje"]
 aparicion: { obra: Teogonía, versos: "1011-1018" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["petaso", "remo"]
 ---
 Héroe paciente unido a Circe y a Calipso.

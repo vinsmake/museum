@@ -10,9 +10,5 @@ categoria: monstruo
 padres: ["quimera", "orto"]
 dominio: ["la perdición de Tebas"]
 aparicion: { obra: Teogonía, versos: "326" }
-estatua:
-  figura: monstruo
-  genero: femenino
-  atributos: ["alas", "leon"]
 ---
 Nombre que da Hesíodo a la Esfinge, ruina de los cadmeos (los tebanos). Hija de Orto y de la Quimera (o de Equidna).

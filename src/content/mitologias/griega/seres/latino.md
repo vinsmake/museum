@@ -9,9 +9,5 @@ categoria: mortal
 padres: ["odiseo", "circe"]
 dominio: ["los tirrenos"]
 aparicion: { obra: Teogonía, versos: "1013" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["cetro"]
 ---
 Hijo de Odiseo y Circe, irreprochable y fuerte.

@@ -11,8 +11,5 @@ padres: ["ponto", "gea"]
 parejas: ["crio"]
 dominio: ["el poder del mar"]
 aparicion: { obra: Teogonía, versos: "239" }
-estatua:
-  figura: humana
-  genero: femenino
 ---
 Hija de Ponto y Gea, de corazón de acero. Se une al titán Crío y es madre de Astreo, Palante y Perses.

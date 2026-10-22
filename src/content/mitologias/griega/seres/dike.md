@@ -11,9 +11,5 @@ grupo: horas
 padres: ["zeus", "temis"]
 dominio: ["la justicia"]
 aparicion: { obra: Teogonía, versos: "902" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["balanza"]
 ---
 Hora de la Justicia, hija de Zeus y Temis.

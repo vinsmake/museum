@@ -16,10 +16,5 @@ otrasFuentes:
 citas:
   - versos: "824-826"
     texto: "De sus hombros salían cien cabezas de serpiente, de terrible dragón, que vibraban sus lenguas negras."
-estatua:
-  figura: monstruo
-  genero: masculino
-  escala: 1.5
-  atributos: ["cien-cabezas-serpiente", "alas"]
 ---
 Último hijo de Gea, unida a Tártaro. De sus hombros salen cien cabezas de serpiente que echan fuego por los ojos y emiten todas las voces: unas veces la de los dioses, otras la de un toro, un león, un perro o un silbido. Habría reinado sobre dioses y hombres si Zeus no lo hubiera abrasado con el rayo y arrojado al Tártaro.

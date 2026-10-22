@@ -11,9 +11,5 @@ colectivo: true
 padres: ["eris"]
 dominio: ["la mentira"]
 aparicion: { obra: Teogonía, versos: "229" }
-estatua:
-  figura: grupo
-  genero: neutro
-  atributos: ["mascara"]
 ---
 Las Mentiras.

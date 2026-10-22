@@ -10,8 +10,5 @@ padres: ["crio", "euribia"]
 parejas: ["asteria"]
 dominio: ["la destrucción"]
 aparicion: { obra: Teogonía, versos: "377" }
-estatua:
-  figura: humana
-  genero: masculino
 ---
 Hijo de Crío y Euribia, sobresaliente en sabiduría. Con Asteria engendra a Hécate.

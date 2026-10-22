@@ -11,9 +11,5 @@ grupo: horas
 padres: ["zeus", "temis"]
 dominio: ["la paz"]
 aparicion: { obra: Teogonía, versos: "902" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cornucopia"]
 ---
 Hora de la Paz floreciente, hija de Zeus y Temis.

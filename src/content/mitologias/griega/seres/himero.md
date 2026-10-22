@@ -12,9 +12,5 @@ dominio: ["el deseo amoroso"]
 aparicion: { obra: Teogonía, versos: "201" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "64" }
-estatua:
-  figura: alada
-  genero: masculino
-  atributos: ["alas"]
 ---
 El Deseo, que junto a Eros acompaña a Afrodita desde su nacimiento. Antes vive con las Cárites cerca de las Musas.

@@ -10,9 +10,5 @@ grupo: nereidas
 padres: ["nereo", "doris"]
 dominio: ["el mar"]
 aparicion: { obra: Teogonía, versos: "248" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["concha"]
 ---
 Nereida "que lleva", la corriente que transporta.

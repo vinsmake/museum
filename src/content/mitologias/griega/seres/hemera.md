@@ -12,9 +12,5 @@ dominio: ["el día"]
 aparicion: { obra: Teogonía, versos: "124-125" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "748-757" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["antorcha"]
 ---
 El Día, hija de Nix y Érebo. Ella y su madre se cruzan en el umbral de bronce de su morada: cuando una entra, la otra sale.

@@ -10,9 +10,5 @@ grupo: rios
 padres: ["oceano", "tetis"]
 dominio: ["el río Haliacmón"]
 aparicion: { obra: Teogonía, versos: "341" }
-estatua:
-  figura: rio
-  genero: masculino
-  atributos: ["cantaro"]
 ---
 El Haliacmón, río de Macedonia.

@@ -16,8 +16,5 @@ otrasFuentes:
 citas:
   - versos: "119"
     texto: "Y el tenebroso Tártaro, en lo más hondo de la tierra de anchos caminos."
-estatua:
-  figura: abstracta
-  genero: masculino
 ---
 Tártaro es a la vez un dios y un lugar: la prisión subterránea, tan lejos bajo la tierra como el cielo está sobre ella. Allí encierra Zeus a los Titanes vencidos. Unido a Gea, engendra a Tifón.

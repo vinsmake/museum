@@ -10,9 +10,5 @@ categoria: deidad
 padres: ["demeter", "iasion"]
 dominio: ["la riqueza"]
 aparicion: { obra: Teogonía, versos: "969-974" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["cornucopia"]
 ---
 Hijo de Deméter y el héroe Iasión, nacido en Creta. Recorre la tierra y el mar, y hace rico a quien encuentra.

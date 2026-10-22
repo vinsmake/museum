@@ -11,9 +11,5 @@ grupo: carites
 padres: ["zeus", "eurinome"]
 dominio: ["la alegría"]
 aparicion: { obra: Teogonía, versos: "909" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["flores"]
 ---
 Cárite de la Alegría.

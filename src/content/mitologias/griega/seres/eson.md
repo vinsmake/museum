@@ -9,9 +9,5 @@ categoria: mortal
 origen: "Mortal; la Teogonía no da su origen."
 dominio: ["Yolco"]
 aparicion: { obra: Teogonía, versos: "993" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["baston"]
 ---
 Padre de Jasón.

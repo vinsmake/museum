@@ -13,9 +13,5 @@ aparicion: { obra: Teogonía, versos: "116" }
 citas:
   - versos: "116"
     texto: "En primer lugar existió el Caos."
-estatua:
-  figura: abstracta
-  genero: neutro
-  escala: 1.2
 ---
 Para Hesíodo, Caos no es el desorden sino el **vacío**: el espacio abierto que existe antes que cualquier otra cosa. De él nacen Érebo, la oscuridad, y Nix, la Noche.

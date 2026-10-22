@@ -10,9 +10,5 @@ origen: "La Teogonía no da su origen (la tradición lo hace hijo de Apolo y Cir
 parejas: ["autonoe-cadmea"]
 dominio: ["la apicultura"]
 aparicion: { obra: Teogonía, versos: "977" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["colmena"]
 ---
 Esposo de Autónoe.

@@ -12,9 +12,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "353" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "17" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 La amable Dione. En Hesíodo es una oceánide; Homero, en cambio, la hace madre de Afrodita.

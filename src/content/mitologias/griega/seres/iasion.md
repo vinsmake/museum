@@ -10,9 +10,5 @@ origen: "Héroe mortal; la Teogonía no da su origen."
 parejas: ["demeter"]
 dominio: ["la cosecha"]
 aparicion: { obra: Teogonía, versos: "969-971" }
-estatua:
-  figura: humana
-  genero: masculino
-  atributos: ["espigas"]
 ---
 Héroe que se une a Deméter en un campo arado tres veces en Creta.

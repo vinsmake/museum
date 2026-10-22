@@ -14,9 +14,5 @@ dominio: ["las aguas"]
 aparicion: { obra: Teogonía, versos: "356" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "956-957" }
-estatua:
-  figura: humana
-  genero: femenino
-  atributos: ["cantaro"]
 ---
 Oceánide esposa de Helios y madre de Circe y Eetes.
