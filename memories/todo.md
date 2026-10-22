@@ -1,14 +1,15 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 4 terminado. Esperando aprobación del usuario para iniciar el Punto 5.**
+> Estado: **Plan replanteado (2026-10-22): museo 2D con imágenes reales. Esperando aprobación del usuario para iniciar el Punto 5.**
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
 ## Objetivo
 
-Un museo web totalmente interactivo con una estatua por cada ser de la mitología griega
-(primordiales, titanes, dioses, monstruos, ninfas, etc.), ordenados cronológicamente según su
-aparición en la **Teogonía de Hesíodo** (canon base), cada uno con su ficha de información.
+Un museo web interactivo de la mitología griega con un **recorrido cronológico** por todos los seres
+(primordiales, titanes, dioses, monstruos, ninfas, etc.) según su aparición en la **Teogonía de Hesíodo**
+(canon base), cada uno con su ficha de información y, cuando existe, **imágenes de obras reales conocidas**
+(esculturas, vasijas, pinturas). No es 3D.
 La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, etc.).
 
 ## Restricciones del usuario
@@ -18,99 +19,89 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Frontend: **Astro** (salvo que otro stack lo haga claramente mejor).
 - Todo el contexto del proyecto vive en `memories/` (las sesiones cambian y se pierde contexto).
 - Idioma del contenido y la documentación: **español**.
+- Commits: uno por punto terminado.
 
 ## Stack decidido
 
 | Pieza | Elección | Motivo |
 |---|---|---|
 | Framework | Astro (última versión), salida estática | Content Collections con validación de esquema: ideal para un catálogo grande de seres en archivos de datos |
-| 3D / estatuas | Three.js dentro de una "isla" de Astro | Sala de museo navegable con estatuas de mármol, luz y cámara |
-| Estatuas | Generadas proceduralmente (pedestal + figura + atributo/símbolo de cada ser) | No existen modelos 3D libres para cientos de seres; el generador permite que cada uno se vea distinto. Se podrá sustituir por modelos `.glb` individuales más adelante |
-| Datos | Archivos JSON/MD por ser, validados con Zod (Content Collections) | Agregar un dios = agregar un archivo |
+| Imágenes | Obras reales de **Wikimedia Commons** (dominio público o licencia libre), **descargadas** al proyecto | No depender de otro sitio; Astro las optimiza (tamaños y formatos) en el build |
+| Seres sin obra conocida | **Ficha sin imagen**: tarjeta tipográfica con el nombre griego grabado | Los 313 seres siguen en el recorrido |
+| Datos | Archivos `.md` por ser, validados con Zod (Content Collections) | Agregar un dios = agregar un archivo |
 | Entorno | `docker compose` con servicios `dev` (servidor con recarga en caliente) y `build` (genera `dist/`) | Sin instalaciones en host |
-| Publicación web | Build estático (`dist/`) | Se puede publicar como Artifact de claude.ai o en cualquier hosting estático (decidir en el Punto 9) |
+| Publicación web | Build estático (`dist/`) | Hosting a decidir en el Punto 10 |
 
 ## Puntos
 
 ### [x] Punto 1. Infraestructura Docker + proyecto Astro vacío
 - Hecho: Node `26.12.1-alpine`, Astro `7.4.2`, servicios `dev`, `build`, `preview`, `npm`.
-- `Dockerfile` basado en la imagen `node` más reciente (alpine si es compatible).
-- `docker-compose.yml` con servicios `dev` (puerto 4321, volumen montado, `node_modules` en volumen aparte) y `build`.
-- Crear el proyecto Astro dentro del contenedor (sin instalar nada en el host).
-- Verificar que `docker compose up dev` sirve la página en `http://localhost:4321`.
-- Memoria: `memories/infraestructura.md` (comandos, puertos, cómo arrancar, cómo resolver problemas).
+- Memoria: `memories/infraestructura.md`.
 
 ### [x] Punto 2. Arquitectura multi-mitología y esquema de datos
-- Hecho: `src/content.config.ts`, `src/lib/mitologias.ts` (acceso + validación), griega con 4 seres de ejemplo,
-  nórdica como `proximamente`. Los seres son `.md` (frontmatter = datos, cuerpo = descripción); `hijos` se calcula.
-- Estructura: `src/content/mitologias/<id>/` (p. ej. `griega/`), con un archivo de metadatos por mitología
-  (nombre, fuente canónica, salas/eras, paleta) y un archivo por ser.
-- Esquema Zod de un ser: `id`, `nombre`, `nombreOriginal` (griego), `transliteracion`, `orden` (cronológico),
-  `sala` (generación/era), `tipo` (primordial, titán, olímpico, monstruo, ninfa...), `padres`, `pareja`,
-  `descendencia`, `dominio`, `atributos` (símbolos para la estatua), `descripcion`, `citas` (verso y texto),
-  `fuente` (obra + versos, p. ej. *Teogonía* 116-122), `apariencia` (parámetros de la estatua).
+- Hecho: `src/content.config.ts`, `src/lib/mitologias.ts` (acceso + validación), griega y nórdica (`proximamente`).
+  Los seres son `.md` (frontmatter = datos, cuerpo = descripción); `hijos` se calcula.
 - Memoria: `memories/arquitectura.md` y `memories/esquema-datos.md`.
 
 ### [x] Punto 3. Datos de la mitología griega según la Teogonía de Hesíodo
 - Hecho: 313 seres en 11 salas. Criterio de orden y decisiones en `memories/mitologias/griega.md`.
-- Recorrer la Teogonía en orden y registrar a **todos** los seres nombrados, con su número de verso de primera aparición
-  como criterio de orden cronológico.
-- Salas (eras) propuestas en el plan original (SUPERADO: las salas definitivas siguen el orden del poema y están en `memories/mitologias/griega.md`):
-  1. Los primordiales (Caos, Gea, Tártaro, Eros, Érebo, Nix...) — vv. 116-125
-  2. Hijos de Nix y de Érebo — vv. 211-232
-  3. Descendencia de Gea y Urano: Titanes, Cíclopes, Hecatónquiros — vv. 126-153
-  4. Nacidos de la sangre y la castración de Urano (Erinias, Gigantes, Melias, Afrodita) — vv. 176-206
-  5. Linaje del mar: Ponto, Nereo, Nereidas, Taumante, Forcis y Ceto, monstruos — vv. 233-336
-  6. Hijos de los Titanes: Oceánides, ríos, Helios, Selene, Eos, astros, vientos, Hécate, Prometeo, Atlas... — vv. 337-452
-  7. Los Olímpicos: hijos de Crono y Rea, nacimiento de Zeus — vv. 453-506
-  8. Prometeo y Pandora — vv. 507-616
-  9. Titanomaquia y Tifón — vv. 617-880
-  10. Esposas e hijos de Zeus y la nueva generación divina (Atenea, Musas, Horas, Moiras, Cárites, Apolo, Ártemis, Hermes, Dioniso, Heracles...) — vv. 881-1022
-- Fuente del texto: traducción de H. G. Evelyn-White (1914, dominio público) como referencia de versos;
-  descripciones redactadas en español.
-- Seres de otras fuentes (Homero, Apolodoro, etc.) **no** entran en esta fase; se dejan anotados como ampliación futura.
-- Memoria: `memories/mitologias/griega.md` (fuentes, criterio de orden, lista de salas, decisiones dudosas).
 
-### [x] Punto 4. Generador procedural de estatuas (Three.js)
-- Hecho: `src/estatuas/` + taller en `/taller/griega`. Las 313 estatuas se construyen sin errores.
-  Pendiente: revisar a ojo monstruos, híbridos y ríos (ver `memories/estatuas.md`).
-- Figura base de mármol (cuerpo, pose, drapeado) parametrizada por `tipo` y `apariencia`.
-- Atributos según el ser: rayo (Zeus), tridente (Poseidón), égida/lechuza (Atenea), hoz (Crono), lira (Apolo), etc.
-- Formas especiales para seres no humanos (Hidra, Equidna, Cíclopes de un ojo, Hecatónquiros con muchos brazos, Pegaso...).
-- Pedestal con placa del nombre en griego y español.
-- Memoria: `memories/estatuas.md` (cómo funciona el generador, cómo añadir un atributo o forma nueva).
+### [x] Punto 4. Generador procedural de estatuas (Three.js) — DESCARTADO
+- Se construyó (commit `86be93b`), pero el usuario decidió que el museo sea 2D con imágenes reales:
+  las estatuas generadas eran figuras estilizadas, no estatuas reales. Se elimina en el Punto 5.
+  Si algún día se quiere recuperar, está en el historial de git (`src/estatuas/`, `memories/estatuas.md`).
 
-### [ ] Punto 5. Sala del museo interactiva
-- Recorrido 3D por las salas en orden cronológico (avanzar/retroceder, clic en una estatua para acercarse).
-- Controles: ratón/arrastre, teclado (flechas), táctil en móvil.
-- Ficha lateral con la información del ser, la cita de Hesíodo y enlaces a padres/hijos (navegan a su estatua).
-- Rendimiento: carga por sala para no dibujar cientos de estatuas a la vez.
+### [ ] Punto 5. Retirar el 3D y preparar el esquema de imágenes
+- Borrar `src/estatuas/`, `src/pages/taller/`, `memories/estatuas.md`; desinstalar `three` y `@types/three`
+  con `docker compose run --rm npm uninstall ...`.
+- Quitar el bloque `estatua` del esquema y de los 313 `.md`.
+- Añadir al esquema de cada ser una lista opcional `imagenes`, cada una con: `archivo` (ruta local), `obra`
+  (título, p. ej. "Zeus de Otrícoli"), `autor`, `fecha`, `ubicacion` (museo), `licencia`, `fuente` (URL de la
+  página del archivo en Commons). La primera imagen es la principal.
+- Imágenes en `src/assets/imagenes/<mitologia>/<slug>-<n>.jpg` para que Astro las optimice.
+- Memoria: actualizar `esquema-datos.md`, `arquitectura.md`; nueva `memories/imagenes.md`.
 
-### [ ] Punto 6. Vistas complementarias
-- Portada: selector de mitología (hoy solo griega; nórdica marcada como "próximamente").
-- Índice / línea de tiempo con búsqueda y filtros por tipo y sala.
-- Árbol genealógico interactivo.
-- Página individual por ser (URL propia) para compartir y para accesibilidad sin 3D.
+### [ ] Punto 6. Selección y descarga de imágenes de Wikimedia Commons
+- Para cada ser con representación conocida, buscar obras reales en Commons (esculturas antiguas, cerámica,
+  pinturas clásicas) y elegir una principal (y alguna extra si vale la pena).
+- Solo archivos de dominio público o con licencia libre (CC BY / CC BY-SA / CC0); guardar autor y licencia
+  (se mostrarán en la ficha como crédito).
+- Descarga con un script que corre en Docker (API de Commons, versión reducida a ~1600 px de ancho).
+- Estimación: 80-120 seres con imagen (olímpicos, titanes principales, primordiales, monstruos y héroes conocidos);
+  el resto queda con ficha sin imagen.
+- Memoria: `memories/imagenes.md` (cómo se eligieron, cómo añadir o cambiar una imagen, lista de créditos).
 
-### [ ] Punto 7. Diseño visual, accesibilidad y responsive
-- Identidad visual de museo clásico (mármol, bronce, tipografía epigráfica), tema claro/oscuro.
-- Funciona en móvil, con teclado y con `prefers-reduced-motion`.
+### [ ] Punto 7. Recorrido cronológico del museo
+- Portada: entrada al museo y selector de mitologías (griega activa; nórdica "próximamente").
+- Recorrido `/griega`: las 11 salas en orden, cada una como una galería con sus obras enmarcadas y una cartela
+  (nombre, nombre griego, versos). Los seres sin imagen aparecen como ficha tipográfica en el mismo lugar del orden.
+- Ficha de cada ser `/griega/<slug>`: imagen grande con crédito, información, citas de Hesíodo, padres, parejas e
+  hijos (enlaces), y botones **anterior / siguiente** en orden cronológico para recorrer el museo de punta a punta.
+- Navegación con teclado (← →) y en móvil.
+- Índice con búsqueda por nombre (español, griego, otros nombres) y filtros por sala y categoría.
 
-### [ ] Punto 8. Documentación final en `memories/`
-- Guías: `memories/guias/agregar-ser.md`, `modificar-datos.md`, `agregar-mitologia.md` (ejemplo: nórdica con la *Edda*).
+### [ ] Punto 8. Diseño visual, accesibilidad y responsive
+- Identidad de museo clásico (paredes, marcos, cartelas, tipografía epigráfica), tema claro/oscuro.
+- Funciona en móvil, con teclado y con `prefers-reduced-motion`. Imágenes con texto alternativo.
+
+### [ ] Punto 9. Documentación final en `memories/`
+- Guías: `memories/guias/agregar-ser.md`, `modificar-datos.md`, `agregar-imagen.md`, `agregar-mitologia.md`
+  (ejemplo: nórdica con la *Edda*).
 - Revisión de que cada memoria refleja el estado real del código.
 
-### [ ] Punto 9. Publicación en la web
+### [ ] Punto 10. Publicación en la web
 - `docker compose run --rm build` genera `dist/`.
 - Publicar (opción por decidir con el usuario: Artifact de claude.ai, GitHub Pages, Netlify, etc.).
 - Memoria: `memories/despliegue.md`.
 
 ## Preguntas abiertas (resolver antes del punto indicado)
-- Punto 9: ¿dónde publicar?
+- Punto 10: ¿dónde publicar?
 
 ## Decisiones tomadas
 - Punto 3 (2026-10-22): se incluyen uno por uno todos los nombrados (Nereidas, Oceánides, ríos). Las Musas abren
   el recorrido en la sala del proemio; el resto se ordena por el verso de su nacimiento u origen (o primera mención).
+- Replanteo (2026-10-22): museo 2D, no 3D. Imágenes de obras reales **descargadas** de Wikimedia Commons. Los seres
+  sin obra conocida quedan con **ficha sin imagen**. El generador 3D se **elimina**.
 
 ## Registro de avance
 - 2026-10-22: creado este plan y `memories/README.md`.
@@ -120,8 +111,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   `src/lib/mitologias.ts` (probada con un archivo inválido), `orden` = verso de primera aparición.
   `.gitattributes` fuerza LF. Detalle en `memories/arquitectura.md`, `esquema-datos.md` y `mitologias/griega.md`.
 - 2026-10-22: Punto 3 terminado. 313 seres de la Teogonía (vv. 1-1022) generados una vez desde tablas; ahora los
-  `.md` son la fuente de verdad. Build OK con validación. Se añadió la categoría `criatura`. Los valores de
-  `estatua.figura` y `estatua.atributos` que debe cubrir el Punto 4 están en `memories/esquema-datos.md`.
-- 2026-10-22: Punto 4 terminado. Three.js 0.186.1 (instalado con el servicio npm de Docker). Generador en
-  `src/estatuas/` (10 figuras, ~110 atributos), pedestal con placa, taller en `/taller/griega`. Comprobación masiva
-  en Node: 0 fallos. Solo Zeus revisado visualmente (la extensión de Chrome se desconectó). Detalle en `memories/estatuas.md`.
+  `.md` son la fuente de verdad. Build OK con validación. Se añadió la categoría `criatura`.
+- 2026-10-22: Punto 4 terminado (Three.js, `src/estatuas/`, taller). Luego descartado por el usuario en el replanteo.
+- 2026-10-22: Replanteo del plan: Puntos 5-10 nuevos (retirar 3D, imágenes de Commons, recorrido 2D, diseño,
+  guías, publicación).
