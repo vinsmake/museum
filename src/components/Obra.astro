@@ -1,7 +1,7 @@
 ---
 // Una obra enmarcada en la pared: la imagen principal del ser o, si no tiene, una ficha tipográfica
 // con su nombre griego "grabado" en piedra.
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import type { Ser } from '../lib/mitologias';
 
 interface Props {
@@ -12,19 +12,19 @@ interface Props {
 
 const { ser, tamano = 'galeria', cargaDiferida = true } = Astro.props;
 const img = ser.data.imagenes[0];
-const anchos = tamano === 'grande' ? [480, 800, 1280] : [240, 400, 640];
+const anchos = tamano === 'grande' ? [640, 960, 1280] : [320, 480];
 const sizes = tamano === 'grande' ? '(max-width: 900px) 100vw, 60vw' : '(max-width: 600px) 45vw, 220px';
 ---
 
 <div class:list={['marco', `marco-${tamano}`, { 'sin-imagen': !img }]}>
   {
     img ? (
-      <Picture
+      <Image
         src={img.archivo}
         alt={img.alt ?? `${img.obra} (${ser.data.nombre})`}
         widths={[...new Set([...anchos.filter((w) => w < img.archivo.width), Math.min(img.archivo.width, anchos.at(-1)!)])]}
         sizes={sizes}
-        formats={['avif', 'webp']}
+        format="webp"
         loading={cargaDiferida ? 'lazy' : 'eager'}
         style={img.enfoque ? `object-position: ${img.enfoque}` : undefined}
       />

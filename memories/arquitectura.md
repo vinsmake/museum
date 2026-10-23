@@ -70,7 +70,7 @@ Solo se generan rutas para mitologías con `estado: activa`.
 | `/<mitologia>/<slug>/` | `pages/[mitologia]/[ser].astro` | Obra grande con crédito, datos, citas, parentesco con enlaces, "del mismo grupo", otras obras, y **anterior/siguiente** en orden cronológico (flechas ← → del teclado) |
 | `/<mitologia>/indice/` | `pages/[mitologia]/indice.astro` | Todos los seres; búsqueda sin tildes por nombre, nombre original, transliteración y otros nombres; filtros por sala, categoría y "solo con obra". El estado de los filtros queda en la URL (`?q=zeus&sala=olimpicos`) |
 
-- Imágenes: `<Picture>` de `astro:assets` genera AVIF y WebP en varios anchos. La primera generación tarda
+- Imágenes: `<Image>` de `astro:assets` genera WebP en varios anchos (ver `diseno.md`). La primera generación tarda
   ~5 min (313 páginas, 103 obras); después Astro las reutiliza de su caché (`node_modules/.astro`, en el volumen).
 - Encuadre: las miniaturas recortan a 3:4 con `object-position: 50% 15%` (cabezas de estatuas visibles);
   un ser puede cambiarlo con `enfoque` en su imagen.

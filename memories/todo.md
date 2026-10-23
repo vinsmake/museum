@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 7 terminado. Punto 8 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
+> Estado: **Punto 8 terminado. Punto 9 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -84,7 +84,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Navegación con teclado (← →) y en móvil.
 - Índice con búsqueda por nombre (español, griego, otros nombres) y filtros por sala y categoría.
 
-### [ ] Punto 8. Diseño visual, accesibilidad y responsive
+### [x] Punto 8. Diseño visual, accesibilidad y responsive
 - Identidad de museo clásico (paredes, marcos, cartelas, tipografía epigráfica), tema claro/oscuro.
 - Funciona en móvil, con teclado y con `prefers-reduced-motion`. Imágenes con texto alternativo.
 
@@ -129,3 +129,5 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-23: Punto 7 terminado. Portada, recorrido por salas (con vitrinas para grupos grandes), ficha con
   anterior/siguiente y flechas del teclado, índice con búsqueda y filtros. 316 páginas. Las salas tienen ahora
   `descripcion` en `mitologia.yaml`. Detalle en `memories/arquitectura.md` (sección Páginas).
+- 2026-10-23: Punto 8 terminado. Tema claro/oscuro con botón, cabecera compacta en móvil (sin desbordamiento a
+  360 px), imágenes solo WebP (sitio de 183 MB a ~80 MB), accesibilidad documentada en `memories/diseno.md`.

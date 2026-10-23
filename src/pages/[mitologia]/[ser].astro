@@ -2,7 +2,7 @@
 // Ficha de un ser: obra grande con su crédito, datos, citas del canon, parentesco y navegación
 // anterior / siguiente en orden cronológico (también con las flechas del teclado).
 import { render } from 'astro:content';
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Museo from '../../layouts/Museo.astro';
 import Obra from '../../components/Obra.astro';
 import { getMitologias, getSeres, type Ser } from '../../lib/mitologias';
@@ -184,7 +184,7 @@ const parentesco: { titulo: string; seres: Ser[] }[] = [
             <li>
               <figure>
                 <div class="marco">
-                  <Picture src={img.archivo} alt={img.alt ?? `${img.obra} (${d.nombre})`} widths={[400, 640]} sizes="20rem" formats={['avif', 'webp']} />
+                  <Image src={img.archivo} alt={img.alt ?? `${img.obra} (${d.nombre})`} widths={[400, 640]} sizes="20rem" format="webp" />
                 </div>
                 <figcaption class="credito">
                   <span class="credito-obra">{img.obra}</span>
