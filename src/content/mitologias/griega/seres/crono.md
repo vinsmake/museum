@@ -17,5 +17,13 @@ otrasFuentes:
 citas:
   - versos: "137-138"
     texto: "Y después de ellos nació el más joven, Crono de mente retorcida, el más terrible de los hijos, que odió a su vigoroso padre."
+imagenes:
+  - archivo: "../imagenes/crono-1.jpg"
+    obra: "Saturno devorando a un hijo"
+    autor: "Pedro Pablo Rubens"
+    fecha: "1636-1638"
+    ubicacion: "Museo del Prado, Madrid"
+    licencia: "Dominio público"
+    fuente: "https://commons.wikimedia.org/wiki/File:Rubens_saturn.jpg"
 ---
 El menor y más terrible de los Titanes. Con la hoz que le da Gea castra a Urano y toma el poder. Temiendo ser destronado, devora a sus hijos, hasta que Zeus lo vence.

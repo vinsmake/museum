@@ -16,5 +16,13 @@ otrasFuentes:
 citas:
   - versos: "824-826"
     texto: "De sus hombros salían cien cabezas de serpiente, de terrible dragón, que vibraban sus lenguas negras."
+imagenes:
+  - archivo: "../imagenes/tifon-1.jpg"
+    obra: "Tifón (hidria calcídica)"
+    autor: "Anónimo"
+    fecha: "c. 540 a. C."
+    ubicacion: "Staatliche Antikensammlungen, Múnich"
+    licencia: "Dominio público"
+    fuente: "https://commons.wikimedia.org/wiki/File:Typhon_Staatliche_Antikensammlungen_596.jpg"
 ---
 Último hijo de Gea, unida a Tártaro. De sus hombros salen cien cabezas de serpiente que echan fuego por los ojos y emiten todas las voces: unas veces la de los dioses, otras la de un toro, un león, un perro o un silbido. Habría reinado sobre dioses y hombres si Zeus no lo hubiera abrasado con el rayo y arrojado al Tártaro.

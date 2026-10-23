@@ -12,5 +12,13 @@ aparicion: { obra: Teogonía, versos: "225-226" }
 citas:
   - versos: "226-227"
     texto: "Y la odiosa Eris dio a luz a la penosa Fatiga, al Olvido, al Hambre y a los Dolores que hacen llorar."
+imagenes:
+  - archivo: "../imagenes/eris-1.jpg"
+    obra: "Eris (tondo de un kílix ático de figuras negras)"
+    autor: "Anónimo (cerámica ática)"
+    fecha: "siglo VI a. C."
+    ubicacion: "Antikensammlung, Berlín"
+    licencia: "Dominio público"
+    fuente: "https://commons.wikimedia.org/wiki/File:Eris_Antikensammlung_Berlin_F1775.jpg"
 ---
 La Discordia de ánimo violento. Sin unirse a nadie engendra los males que afligen a los hombres: la Fatiga, el Olvido, el Hambre, los Dolores, las batallas, las mentiras y el Juramento.

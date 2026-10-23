@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 5 terminado. Esperando aprobación del usuario para iniciar el Punto 6.**
+> Estado: **Punto 6 terminado. Punto 7 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -63,7 +63,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Imágenes en `src/assets/imagenes/<mitologia>/<slug>-<n>.jpg` para que Astro las optimice.
 - Memoria: actualizar `esquema-datos.md`, `arquitectura.md`; nueva `memories/imagenes.md`.
 
-### [ ] Punto 6. Selección y descarga de imágenes de Wikimedia Commons
+### [x] Punto 6. Selección y descarga de imágenes de Wikimedia Commons
 - Para cada ser con representación conocida, buscar obras reales en Commons (esculturas antiguas, cerámica,
   pinturas clásicas) y elegir una principal (y alguna extra si vale la pena).
 - Solo archivos de dominio público o con licencia libre (CC BY / CC BY-SA / CC0); guardar autor y licencia
@@ -72,6 +72,8 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Estimación: 80-120 seres con imagen (olímpicos, titanes principales, primordiales, monstruos y héroes conocidos);
   el resto queda con ficha sin imagen.
 - Memoria: `memories/imagenes.md` (cómo se eligieron, cómo añadir o cambiar una imagen, lista de créditos).
+- Hecho: 103 archivos, 112 seres con imagen (miniaturas de 1280 px). Scripts en `scripts/imagenes/`, créditos en
+  `scripts/imagenes/descargadas.json`.
 
 ### [ ] Punto 7. Recorrido cronológico del museo
 - Portada: entrada al museo y selector de mitologías (griega activa; nórdica "próximamente").
@@ -121,3 +123,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   (desinstalado con el servicio npm). Quitado `estatua` de los 313 `.md` y del esquema. Nuevo campo `imagenes`
   con `image()` (probado: imagen válida compila; ruta inexistente falla con `ImageNotFound`). Nueva memoria
   `memories/imagenes.md`.
+- 2026-10-23: Punto 6 terminado. 103 imágenes de Commons (54 PD, 14 CC0, 38 CC BY/BY-SA) para 112 seres, escritas
+  en el bloque `imagenes` de cada `.md`. Scripts de búsqueda y descarga en `scripts/imagenes/`. Build OK.
+  El usuario pidió seguir con los puntos siguientes sin pedir confirmación entre ellos.

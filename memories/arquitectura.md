@@ -19,6 +19,7 @@ src/
       mitologia.yaml                 # estado: proximamente (sin seres aún)
   lib/mitologias.ts                  # ÚNICA puerta de acceso a los datos + validación
   pages/index.astro                  # portada provisional (lista de comprobación)
+scripts/imagenes/                    # búsqueda y descarga de obras en Commons (ver imagenes.md)
 memories/                            # documentación y contexto (este directorio)
 ```
 

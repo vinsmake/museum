@@ -13,5 +13,12 @@ dominio: ["la dulzura", "la maternidad"]
 aparicion: { obra: Teogonía, versos: "404-408" }
 otrasFuentes:
   - { obra: "Teogonía", versos: "918-920" }
+imagenes:
+  - archivo: "../imagenes/leto-1.jpg"
+    obra: "Ticio intenta raptar a Leto ante Apolo (ánfora ática)"
+    autor: "Anónimo (cerámica ática)"
+    ubicacion: "Museo del Louvre, París"
+    licencia: "Dominio público"
+    fuente: "https://commons.wikimedia.org/wiki/File:Tityos_Leto_Louvre_G42.jpg"
 ---
 Hija de Ceo y Febe, siempre dulce, amable con hombres y dioses. Unida a Zeus es madre de Apolo y Ártemis.

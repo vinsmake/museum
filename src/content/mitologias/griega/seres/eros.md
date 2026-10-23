@@ -13,5 +13,14 @@ aparicion: { obra: Teogonía, versos: "120-122" }
 citas:
   - versos: "120-122"
     texto: "Y Eros, el más hermoso entre los dioses inmortales, que afloja los miembros y doma en el pecho el sentido y la prudente voluntad de todos los dioses y todos los hombres."
+imagenes:
+  - archivo: "../imagenes/eros-1.jpg"
+    obra: "Eros de Centocelle"
+    autor: "Anónimo (copia romana de un modelo del siglo IV a. C.)"
+    fecha: "siglo II d. C."
+    ubicacion: "Museos Vaticanos"
+    fotografo: "Fabrizio Garrisi"
+    licencia: "CC BY-SA 4.0"
+    fuente: "https://commons.wikimedia.org/wiki/File:Eros_di_Centocelle,_II_sec.,_da_modello_del_IV_sec._a.C._-FG.jpg"
 ---
 En Hesíodo, Eros no es todavía el niño hijo de Afrodita de la tradición posterior, sino una fuerza primordial: el deseo que hace posible que los dioses se unan y engendren. Más adelante acompaña a Afrodita desde su nacimiento.

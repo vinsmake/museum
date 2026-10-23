@@ -25,7 +25,7 @@ porque las sesiones cambian y el contexto se pierde.
 | `arquitectura.md` | Estructura multi-mitología | listo |
 | `esquema-datos.md` | Campos de cada ser | listo |
 | `mitologias/griega.md` | Fuentes, criterio de orden, salas, nombres repetidos y pasajes ambiguos | listo |
-| `imagenes.md` | Imágenes de obras: dónde van, licencias, cómo añadirlas | listo (proceso de descarga se completa en Punto 6) |
+| `imagenes.md` | Imágenes de obras: dónde van, licencias, cómo añadirlas | listo |
 | `guias/agregar-ser.md` | Cómo añadir un ser | pendiente (Punto 9) |
 | `guias/modificar-datos.md` | Cómo editar datos | pendiente (Punto 9) |
 | `guias/agregar-imagen.md` | Cómo añadir una imagen | pendiente (Punto 9) |

@@ -17,5 +17,14 @@ otrasFuentes:
 citas:
   - versos: "954-955"
     texto: "Dichoso él, que tras cumplir su gran obra entre los inmortales habita sin daño y sin vejez todos los días."
+imagenes:
+  - archivo: "../imagenes/heracles-1.jpg"
+    obra: "Hércules Farnesio"
+    autor: "Glicón de Atenas (copia de un original de Lisipo)"
+    fecha: "siglo III d. C."
+    ubicacion: "Museo Arqueológico Nacional de Nápoles"
+    fotografo: "Glycon of Athens (copy), Lysippos (original type)"
+    licencia: "CC BY 2.5"
+    fuente: "https://commons.wikimedia.org/wiki/File:Herakles_Farnese_MAN_Napoli_Inv6001_n01.jpg"
 ---
 Hijo de Zeus y Alcmena. En la Teogonía mata a Gerión, a la Hidra, al León de Nemea y al águila de Prometeo. Terminados sus trabajos, vive feliz en el Olimpo, sin dolor ni vejez, casado con Hebe.
