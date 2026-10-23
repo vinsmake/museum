@@ -30,7 +30,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 | Seres sin obra conocida | **Ficha sin imagen**: tarjeta tipográfica con el nombre griego grabado | Los 313 seres siguen en el recorrido |
 | Datos | Archivos `.md` por ser, validados con Zod (Content Collections) | Agregar un dios = agregar un archivo |
 | Entorno | `docker compose` con servicios `dev` (servidor con recarga en caliente) y `build` (genera `dist/`) | Sin instalaciones en host |
-| Publicación web | Build estático (`dist/`) | Hosting a decidir en el Punto 10 |
+| Publicación web | GitHub Pages con GitHub Actions | El repositorio ya está en GitHub; el build corre en sus servidores |
 
 ## Puntos
 
