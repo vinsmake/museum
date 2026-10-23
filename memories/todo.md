@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 8 terminado. Punto 9 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
+> Estado: **Punto 9 terminado. Punto 10 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -88,7 +88,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Identidad de museo clásico (paredes, marcos, cartelas, tipografía epigráfica), tema claro/oscuro.
 - Funciona en móvil, con teclado y con `prefers-reduced-motion`. Imágenes con texto alternativo.
 
-### [ ] Punto 9. Documentación final en `memories/`
+### [x] Punto 9. Documentación final en `memories/`
 - Guías: `memories/guias/agregar-ser.md`, `modificar-datos.md`, `agregar-imagen.md`, `agregar-mitologia.md`
   (ejemplo: nórdica con la *Edda*).
 - Revisión de que cada memoria refleja el estado real del código.
@@ -131,3 +131,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   `descripcion` en `mitologia.yaml`. Detalle en `memories/arquitectura.md` (sección Páginas).
 - 2026-10-23: Punto 8 terminado. Tema claro/oscuro con botón, cabecera compacta en móvil (sin desbordamiento a
   360 px), imágenes solo WebP (sitio de 183 MB a ~80 MB), accesibilidad documentada en `memories/diseno.md`.
+- 2026-10-23: Punto 9 terminado. Guías en `memories/guias/` (agregar-ser, modificar-datos, agregar-imagen,
+  agregar-mitologia). Revisadas las memorias contra el código; README raíz actualizado; el pie ya no nombra
+  solo a Hesíodo.
