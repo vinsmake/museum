@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 9 terminado. Punto 10 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
+> Estado: **Puntos 1-10 terminados.** Falta solo activar GitHub Pages en la configuración del repositorio (ver `memories/despliegue.md`).
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -93,13 +93,13 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
   (ejemplo: nórdica con la *Edda*).
 - Revisión de que cada memoria refleja el estado real del código.
 
-### [ ] Punto 10. Publicación en la web
+### [x] Punto 10. Publicación en la web
 - `docker compose run --rm build` genera `dist/`.
 - Publicar (opción por decidir con el usuario: Artifact de claude.ai, GitHub Pages, Netlify, etc.).
 - Memoria: `memories/despliegue.md`.
 
 ## Preguntas abiertas (resolver antes del punto indicado)
-- Punto 10: ¿dónde publicar?
+- (Resuelta) Punto 10: GitHub Pages, porque el repositorio ya estaba en GitHub.
 
 ## Decisiones tomadas
 - Punto 3 (2026-10-22): se incluyen uno por uno todos los nombrados (Nereidas, Oceánides, ríos). Las Musas abren
@@ -134,3 +134,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-23: Punto 9 terminado. Guías en `memories/guias/` (agregar-ser, modificar-datos, agregar-imagen,
   agregar-mitologia). Revisadas las memorias contra el código; README raíz actualizado; el pie ya no nombra
   solo a Hesíodo.
+- 2026-10-23: Punto 10 terminado. Workflow `.github/workflows/pages.yml` (build en GitHub Actions con Node 26 y
+  publicación en Pages), `base` configurable (`BASE_PATH`), probado en local bajo `/museum/`. Pendiente del
+  dueño: Settings → Pages → Source: GitHub Actions. Detalle en `memories/despliegue.md`.

@@ -31,4 +31,4 @@ porque las sesiones cambian y el contexto se pierde.
 | `guias/modificar-datos.md` | Cómo editar datos | listo |
 | `guias/agregar-imagen.md` | Cómo añadir una imagen | listo |
 | `guias/agregar-mitologia.md` | Cómo añadir una mitología nueva | listo |
-| `despliegue.md` | Publicación web | pendiente (Punto 10) |
+| `despliegue.md` | Publicación en GitHub Pages, base path, prueba local | listo |
