@@ -1,0 +1,239 @@
+---
+// Índice de todos los seres de una mitología, con búsqueda por nombre (español, original, transliteración y
+// otros nombres) y filtros por sala, categoría y obra. Funciona sin JavaScript como lista completa.
+import { Image } from 'astro:assets';
+import Museo from '../../layouts/Museo.astro';
+import { getMitologias, getSeres } from '../../lib/mitologias';
+import { romano, urlSer, versos } from '../../lib/formato';
+
+export async function getStaticPaths() {
+  const activas = (await getMitologias()).filter((m) => m.data.estado === 'activa');
+  return activas.map((m) => ({ params: { mitologia: m.id }, props: { mitologia: m } }));
+}
+
+const { mitologia } = Astro.props;
+const m = mitologia.data;
+const seres = await getSeres(mitologia.id);
+const numSala = new Map(m.salas.map((s, i) => [s.id, i + 1]));
+const categoria = new Map(m.categorias.map((c) => [c.id, c.nombre]));
+// Texto de búsqueda sin tildes ni mayúsculas (el script normaliza la consulta igual)
+const normalizar = (t: string) => t.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+const busqueda = (s: (typeof seres)[number]) =>
+  normalizar([s.data.nombre, s.data.nombreOriginal, s.data.transliteracion, ...s.data.otrosNombres, s.slug].filter(Boolean).join(' '));
+---
+
+<Museo
+  titulo={`Índice · ${m.nombre} · Museo Mitológico`}
+  descripcion={`Todos los seres de la ${m.nombre.toLowerCase()} en orden cronológico.`}
+  tema={m.tema}
+  mitologia={{ id: mitologia.id, nombre: m.nombre }}
+>
+  <header class="cabeza">
+    <p class="etiqueta">{m.canon.obra} · {m.canon.autor}</p>
+    <h1>Índice de seres</h1>
+  </header>
+
+  <form class="filtros" role="search" onsubmit="return false">
+    <label class="campo campo-buscar">
+      <span>Buscar</span>
+      <input type="search" name="q" placeholder="Zeus, Ζεύς, Júpiter…" autocomplete="off" />
+    </label>
+    <label class="campo">
+      <span>Sala</span>
+      <select name="sala">
+        <option value="">Todas</option>
+        {m.salas.map((s, i) => <option value={s.id}>{romano(i + 1)}. {s.nombre}</option>)}
+      </select>
+    </label>
+    <label class="campo">
+      <span>Categoría</span>
+      <select name="categoria">
+        <option value="">Todas</option>
+        {m.categorias.map((c) => <option value={c.id}>{c.nombre}</option>)}
+      </select>
+    </label>
+    <label class="campo campo-check">
+      <input type="checkbox" name="obra" />
+      <span>Solo con obra</span>
+    </label>
+  </form>
+  <p class="contador" aria-live="polite"><span id="visibles">{seres.length}</span> de {seres.length} seres</p>
+
+  <ol class="lista">
+    {
+      seres.map((s) => {
+        const img = s.data.imagenes[0];
+        return (
+          <li data-busqueda={busqueda(s)} data-sala={s.data.sala} data-categoria={s.data.categoria} data-obra={img ? '1' : ''}>
+            <a href={urlSer(s)}>
+              <span class="miniatura" aria-hidden="true">
+                {img ? (
+                  <Image src={img.archivo} alt="" width={96} height={96} fit="cover" loading="lazy" style={img.enfoque ? `object-position: ${img.enfoque}` : undefined} />
+                ) : (
+                  <span class="mini-placa">{(s.data.nombreOriginal ?? s.data.nombre).slice(0, 2)}</span>
+                )}
+              </span>
+              <span class="texto">
+                <span class="cartela-nombre">{s.data.nombre}</span>
+                <span class="cartela-dato">
+                  <span lang="grc">{s.data.nombreOriginal}</span>
+                  {s.data.otrosNombres.length > 0 && <> · {s.data.otrosNombres.join(', ')}</>}
+                </span>
+                <span class="cartela-dato">
+                  Sala {romano(numSala.get(s.data.sala) ?? 0)} · {categoria.get(s.data.categoria)} · {versos(s.data.aparicion.versos)}
+                </span>
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ol>
+  <p class="vacio" hidden>Ningún ser coincide con la búsqueda.</p>
+</Museo>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.filtros')!;
+  const items = [...document.querySelectorAll<HTMLLIElement>('.lista li')];
+  const visibles = document.getElementById('visibles')!;
+  const vacio = document.querySelector<HTMLElement>('.vacio')!;
+  const normalizar = (t: string) => t.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().trim();
+
+  function filtrar() {
+    const datos = new FormData(form);
+    const q = normalizar(String(datos.get('q') ?? ''));
+    const sala = datos.get('sala');
+    const categoria = datos.get('categoria');
+    const obra = datos.get('obra');
+    let n = 0;
+    for (const li of items) {
+      const ok =
+        (!q || li.dataset.busqueda!.includes(q)) &&
+        (!sala || li.dataset.sala === sala) &&
+        (!categoria || li.dataset.categoria === categoria) &&
+        (!obra || li.dataset.obra === '1');
+      li.hidden = !ok;
+      if (ok) n++;
+    }
+    visibles.textContent = String(n);
+    vacio.hidden = n > 0;
+    // Recordar el estado en la URL para poder compartir o volver atrás
+    const params = new URLSearchParams();
+    for (const [k, v] of datos) if (v) params.set(k, String(v));
+    history.replaceState(null, '', params.size ? `?${params}` : location.pathname);
+  }
+
+  // Restaurar filtros desde la URL
+  const inicial = new URLSearchParams(location.search);
+  for (const [k, v] of inicial) {
+    const campo = form.elements.namedItem(k);
+    if (campo instanceof HTMLInputElement && campo.type === 'checkbox') campo.checked = true;
+    else if (campo instanceof HTMLInputElement || campo instanceof HTMLSelectElement) campo.value = v;
+  }
+  form.addEventListener('input', filtrar);
+  if (inicial.size) filtrar();
+</script>
+
+<style>
+  .cabeza {
+    padding: 2.5rem 0 1rem;
+  }
+  .cabeza h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 0.2rem 0;
+  }
+  .filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: end;
+    padding: 1rem;
+    background: var(--pared-2);
+    border: 1px solid var(--linea);
+    position: sticky;
+    top: 3.6rem;
+    z-index: 2;
+  }
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--tinta-suave);
+  }
+  .campo-buscar {
+    flex: 1 1 16rem;
+  }
+  .campo-check {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .filtros input[type='search'],
+  .filtros select {
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--linea);
+    background: var(--pared);
+    color: var(--tinta);
+    min-width: 0;
+    max-width: 100%;
+  }
+  .contador {
+    color: var(--tinta-suave);
+    font-size: 0.9rem;
+  }
+  .lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: 0.75rem 1.5rem;
+  }
+  .lista a {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+  }
+  .lista a:hover {
+    border-color: var(--linea);
+    background: var(--pared-2);
+  }
+  .miniatura {
+    flex: none;
+    width: 4rem;
+    height: 4rem;
+    border: 3px solid var(--marco);
+    background: var(--piedra);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .miniatura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mini-placa {
+    font-family: var(--epigrafica);
+    font-size: 1.3rem;
+    color: #5a5045;
+  }
+  .texto {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .vacio {
+    text-align: center;
+    color: var(--tinta-suave);
+    padding: 2rem;
+  }
+</style>

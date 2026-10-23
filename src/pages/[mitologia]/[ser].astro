@@ -1,0 +1,421 @@
+---
+// Ficha de un ser: obra grande con su crédito, datos, citas del canon, parentesco y navegación
+// anterior / siguiente en orden cronológico (también con las flechas del teclado).
+import { render } from 'astro:content';
+import { Picture } from 'astro:assets';
+import Museo from '../../layouts/Museo.astro';
+import Obra from '../../components/Obra.astro';
+import { getMitologias, getSeres, type Ser } from '../../lib/mitologias';
+import { base, romano, urlSer, versos } from '../../lib/formato';
+
+export async function getStaticPaths() {
+  const activas = (await getMitologias()).filter((m) => m.data.estado === 'activa');
+  const rutas = [];
+  for (const mitologia of activas) {
+    const seres = await getSeres(mitologia.id);
+    seres.forEach((ser, i) =>
+      rutas.push({
+        params: { mitologia: mitologia.id, ser: ser.slug },
+        props: { mitologia, ser, indice: i, anterior: seres[i - 1], siguiente: seres[i + 1], seres },
+      }),
+    );
+  }
+  return rutas;
+}
+
+const { mitologia, ser, indice, anterior, siguiente, seres } = Astro.props as {
+  mitologia: Awaited<ReturnType<typeof getMitologias>>[number];
+  ser: Ser;
+  indice: number;
+  anterior?: Ser;
+  siguiente?: Ser;
+  seres: Ser[];
+};
+const d = ser.data;
+const m = mitologia.data;
+const { Content } = await render(ser.entrada);
+const porSlug = new Map(seres.map((s) => [s.slug, s]));
+const enlaces = (slugs: string[]) => slugs.map((s) => porSlug.get(s)).filter((s): s is Ser => !!s);
+const numSala = m.salas.findIndex((s) => s.id === d.sala);
+const sala = m.salas[numSala];
+const categoria = m.categorias.find((c) => c.id === d.categoria);
+const [principal, ...otras] = d.imagenes;
+const hermanos = d.grupo ? seres.filter((s) => s.data.grupo === d.grupo && s.slug !== ser.slug) : [];
+
+const parentesco: { titulo: string; seres: Ser[] }[] = [
+  { titulo: 'Padres', seres: enlaces(d.padres) },
+  { titulo: 'Parejas', seres: enlaces(d.parejas) },
+  { titulo: 'Hijos', seres: enlaces(ser.hijos) },
+];
+---
+
+<Museo
+  titulo={`${d.nombre} · ${m.nombre} · Museo Mitológico`}
+  descripcion={`${d.nombre}${d.titulo ? `, ${d.titulo.toLowerCase()}` : ''}. ${m.canon.obra}, ${versos(d.aparicion.versos)}.`}
+  tema={m.tema}
+  mitologia={{ id: mitologia.id, nombre: m.nombre }}
+>
+  <nav class="migas" aria-label="Ubicación">
+    <a href={`${base}/${mitologia.id}/`}>{m.nombre}</a>
+    <span aria-hidden="true">›</span>
+    {sala && <a href={`${base}/${mitologia.id}/#${sala.id}`}>Sala {romano(numSala + 1)}: {sala.nombre}</a>}
+    <span class="progreso">Pieza {indice + 1} de {seres.length}</span>
+  </nav>
+
+  <article class="ficha">
+    <figure class="ficha-obra">
+      <Obra ser={ser} tamano="grande" cargaDiferida={false} />
+      {
+        principal && (
+          <figcaption class="credito">
+            <span class="credito-obra">{principal.obra}</span>
+            {[principal.autor, principal.fecha, principal.ubicacion].filter(Boolean).join(' · ')}
+            <span class="credito-licencia">
+              Foto{principal.fotografo && <>: {principal.fotografo}</>} · {principal.licencia} ·{' '}
+              <a href={principal.fuente} rel="noopener">Wikimedia Commons</a>
+            </span>
+          </figcaption>
+        )
+      }
+    </figure>
+
+    <div class="ficha-texto">
+      <p class="etiqueta">{categoria?.nombre ?? d.categoria}</p>
+      <h1>{d.nombre}</h1>
+      {
+        d.nombreOriginal && (
+          <p class="griego">
+            <span lang="grc">{d.nombreOriginal}</span>
+            {d.transliteracion && <span class="translit"> · {d.transliteracion}</span>}
+          </p>
+        )
+      }
+      {d.titulo && <p class="titulo-ser">{d.titulo}</p>}
+
+      <div class="descripcion"><Content /></div>
+
+      {
+        d.citas.map((c) => (
+          <blockquote class="cita">
+            <p>«{c.texto}»</p>
+            <footer>
+              {m.canon.autor}, <cite>{m.canon.obra}</cite>, {versos(c.versos)}
+            </footer>
+          </blockquote>
+        ))
+      }
+
+      <dl class="datos">
+        {d.otrosNombres.length > 0 && (
+          <>
+            <dt>Otros nombres</dt>
+            <dd>{d.otrosNombres.join(', ')}</dd>
+          </>
+        )}
+        {d.dominio.length > 0 && (
+          <>
+            <dt>Dominio</dt>
+            <dd>{d.dominio.join(', ')}</dd>
+          </>
+        )}
+        {d.origen && (
+          <>
+            <dt>Origen</dt>
+            <dd>{d.origen}</dd>
+          </>
+        )}
+        {parentesco
+          .filter((p) => p.seres.length > 0)
+          .map((p) => (
+            <>
+              <dt>{p.titulo}</dt>
+              <dd>
+                {p.seres.map((s, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <a href={urlSer(s)}>{s.data.nombre}</a>
+                  </>
+                ))}
+              </dd>
+            </>
+          ))}
+        <dt>Aparición</dt>
+        <dd>
+          <cite>{d.aparicion.obra}</cite>, {versos(d.aparicion.versos)}
+        </dd>
+        {d.otrasFuentes.length > 0 && (
+          <>
+            <dt>Otras fuentes</dt>
+            <dd>{d.otrasFuentes.map((f) => `${f.obra}, ${versos(f.versos)}`).join('; ')}</dd>
+          </>
+        )}
+        {d.colectivo && (
+          <>
+            <dt>Nota</dt>
+            <dd>Ser colectivo: el poema lo nombra como grupo, sin individuos.</dd>
+          </>
+        )}
+      </dl>
+
+      {
+        hermanos.length > 0 && (
+          <details class="hermanos">
+            <summary>Del mismo grupo ({hermanos.length})</summary>
+            <p>
+              {hermanos.map((s, i) => (
+                <>
+                  {i > 0 && ' · '}
+                  <a href={urlSer(s)}>{s.data.nombre}</a>
+                </>
+              ))}
+            </p>
+          </details>
+        )
+      }
+    </div>
+  </article>
+
+  {
+    otras.length > 0 && (
+      <section class="otras">
+        <h2>Otras obras</h2>
+        <ul>
+          {otras.map((img) => (
+            <li>
+              <figure>
+                <div class="marco">
+                  <Picture src={img.archivo} alt={img.alt ?? `${img.obra} (${d.nombre})`} widths={[400, 640]} sizes="20rem" formats={['avif', 'webp']} />
+                </div>
+                <figcaption class="credito">
+                  <span class="credito-obra">{img.obra}</span>
+                  {[img.autor, img.fecha, img.ubicacion].filter(Boolean).join(' · ')}
+                  <span class="credito-licencia">
+                    Foto{img.fotografo && <>: {img.fotografo}</>} · {img.licencia} ·{' '}
+                    <a href={img.fuente} rel="noopener">Wikimedia Commons</a>
+                  </span>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <nav class="pasos" aria-label="Recorrido cronológico">
+    {
+      anterior ? (
+        <a class="paso anterior" href={urlSer(anterior)} rel="prev" data-tecla="ArrowLeft">
+          <span class="etiqueta">← Anterior</span>
+          <span class="paso-nombre">{anterior.data.nombre}</span>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      siguiente ? (
+        <a class="paso siguiente" href={urlSer(siguiente)} rel="next" data-tecla="ArrowRight">
+          <span class="etiqueta">Siguiente →</span>
+          <span class="paso-nombre">{siguiente.data.nombre}</span>
+        </a>
+      ) : (
+        <a class="paso siguiente" href={`${base}/${mitologia.id}/`}>
+          <span class="etiqueta">Fin del recorrido</span>
+          <span class="paso-nombre">Volver al plano</span>
+        </a>
+      )
+    }
+  </nav>
+  <p class="ayuda-teclado">Usa las flechas ← → del teclado para recorrer el museo.</p>
+</Museo>
+
+<script>
+  // Flechas del teclado: anterior / siguiente (salvo que se esté escribiendo en un campo)
+  document.addEventListener('keydown', (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    const objetivo = e.target as HTMLElement;
+    if (objetivo.closest('input, textarea, select, [contenteditable]')) return;
+    const enlace = document.querySelector<HTMLAnchorElement>(`.pasos [data-tecla="${e.key}"]`);
+    if (enlace) location.href = enlace.href;
+  });
+</script>
+
+<style>
+  .migas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    font-size: 0.95rem;
+    color: var(--tinta-suave);
+  }
+  .progreso {
+    margin-left: auto;
+    font-family: var(--epigrafica);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+  .ficha {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+    padding-top: 1rem;
+  }
+  @media (max-width: 860px) {
+    .ficha {
+      grid-template-columns: 1fr;
+    }
+  }
+  .ficha-obra {
+    margin: 0;
+    position: sticky;
+    top: 4.5rem;
+  }
+  @media (max-width: 860px) {
+    .ficha-obra {
+      position: static;
+    }
+  }
+  .credito {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--tinta-suave);
+    line-height: 1.4;
+  }
+  .credito-obra {
+    display: block;
+    font-style: italic;
+    color: var(--tinta);
+    font-size: 1rem;
+  }
+  .credito-licencia {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+  }
+  .ficha-texto h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    margin: 0.1rem 0 0.2rem;
+  }
+  .griego {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  .translit {
+    color: var(--tinta-suave);
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+  .titulo-ser {
+    font-style: italic;
+    color: var(--tinta-suave);
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+  }
+  .descripcion {
+    font-size: 1.15rem;
+  }
+  .cita {
+    margin: 1.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 3px solid var(--acento);
+    font-size: 1.15rem;
+    font-style: italic;
+  }
+  .cita p {
+    margin: 0 0 0.3rem;
+  }
+  .cita footer {
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--tinta-suave);
+  }
+  .datos {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.4rem 1.25rem;
+    margin: 1.75rem 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--linea);
+  }
+  .datos dt {
+    font-family: var(--epigrafica);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tinta-suave);
+    padding-top: 0.2rem;
+  }
+  .datos dd {
+    margin: 0;
+  }
+  @media (max-width: 480px) {
+    .datos {
+      grid-template-columns: 1fr;
+    }
+    .datos dd {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .hermanos summary {
+    cursor: pointer;
+    font-family: var(--epigrafica);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+  }
+  .otras {
+    margin-top: 3rem;
+    border-top: 1px solid var(--linea);
+  }
+  .otras ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: 2rem;
+  }
+  .otras figure {
+    margin: 0;
+  }
+  .pasos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--linea);
+  }
+  .paso {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--linea);
+    background: var(--pared-2);
+    text-decoration: none;
+    color: var(--tinta);
+  }
+  .paso:hover {
+    border-color: var(--acento);
+  }
+  .siguiente {
+    text-align: right;
+  }
+  .paso-nombre {
+    font-family: var(--epigrafica);
+    font-size: 1.2rem;
+  }
+  .ayuda-teclado {
+    text-align: center;
+    color: var(--tinta-suave);
+    font-size: 0.85rem;
+  }
+  @media (hover: none) {
+    .ayuda-teclado {
+      display: none;
+    }
+  }
+</style>

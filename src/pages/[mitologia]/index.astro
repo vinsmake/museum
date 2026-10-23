@@ -1,0 +1,247 @@
+---
+// Recorrido cronológico de una mitología: sus salas en orden, cada una como una galería de obras con cartela.
+// Los grupos grandes (Nereidas, Oceánides, ríos...) se muestran juntos en una vitrina.
+import Museo from '../../layouts/Museo.astro';
+import Obra from '../../components/Obra.astro';
+import { getMitologias, getSalas, getSeres } from '../../lib/mitologias';
+import { NOMBRE_GRUPO, piezas, romano, urlSer, versos } from '../../lib/formato';
+
+export async function getStaticPaths() {
+  const activas = (await getMitologias()).filter((m) => m.data.estado === 'activa');
+  return activas.map((m) => ({ params: { mitologia: m.id }, props: { mitologia: m } }));
+}
+
+const { mitologia } = Astro.props;
+const d = mitologia.data;
+const salas = (await getSalas(mitologia.id)).filter((s) => s.seres.length > 0);
+const seres = await getSeres(mitologia.id);
+const tamanoGrupo = new Map<string, number>();
+for (const s of seres) if (s.data.grupo) tamanoGrupo.set(s.data.grupo, (tamanoGrupo.get(s.data.grupo) ?? 0) + 1);
+const categoria = new Map(d.categorias.map((c) => [c.id, c.nombre]));
+const primero = seres[0];
+---
+
+<Museo
+  titulo={`${d.nombre} · Museo Mitológico`}
+  descripcion={d.descripcion}
+  tema={d.tema}
+  mitologia={{ id: mitologia.id, nombre: d.nombre }}
+>
+  <section class="intro">
+    <p class="etiqueta">{d.canon.obra} · {d.canon.autor} · {d.canon.fecha}</p>
+    <h1>{d.nombre}</h1>
+    <p class="lema">{d.descripcion}</p>
+    {d.criterioOrden && <p class="criterio">{d.criterioOrden}</p>}
+    {primero && (
+      <a class="boton-recorrido" href={urlSer(primero)}>
+        Recorrer ficha por ficha, desde {primero.data.nombre} →
+      </a>
+    )}
+  </section>
+
+  <nav class="plano" aria-label="Plano de salas">
+    <ol>
+      {
+        salas.map((sala, i) => (
+          <li>
+            <a href={`#${sala.id}`}>
+              <span class="num">{romano(i + 1)}</span> {sala.nombre}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+
+  {
+    salas.map((sala, i) => (
+      <section class="sala" id={sala.id} aria-labelledby={`t-${sala.id}`}>
+        <header class="sala-cabecera">
+          <p class="etiqueta">
+            Sala {romano(i + 1)}
+            {sala.versos && <> · {versos(sala.versos)}</>}
+          </p>
+          <h2 id={`t-${sala.id}`}>{sala.nombre}</h2>
+          {sala.descripcion && <p>{sala.descripcion}</p>}
+        </header>
+
+        <ul class="galeria">
+          {piezas(sala.seres, tamanoGrupo).map((p) =>
+            p.tipo === 'ser' ? (
+              <li class="pieza">
+                <a href={urlSer(p.ser)}>
+                  <Obra ser={p.ser} />
+                  <span class="cartela">
+                    <span class="cartela-nombre">{p.ser.data.nombre}</span>
+                    <span class="cartela-dato">
+                      {categoria.get(p.ser.data.categoria)} · {versos(p.ser.data.aparicion.versos)}
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ) : (
+              <li class="vitrina">
+                <h3>
+                  {NOMBRE_GRUPO[p.grupo] ?? p.grupo}{' '}
+                  <span class="cartela-dato">({p.seres.length})</span>
+                </h3>
+                {p.seres.some((s) => s.data.imagenes.length > 0) && (
+                  <ul class="galeria galeria-vitrina">
+                    {p.seres
+                      .filter((s) => s.data.imagenes.length > 0)
+                      .map((s) => (
+                        <li class="pieza">
+                          <a href={urlSer(s)}>
+                            <Obra ser={s} />
+                            <span class="cartela">
+                              <span class="cartela-nombre">{s.data.nombre}</span>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+                {p.seres.some((s) => s.data.imagenes.length === 0) && (
+                  <ul class="nombres">
+                    {p.seres
+                      .filter((s) => s.data.imagenes.length === 0)
+                      .map((s) => (
+                        <li>
+                          <a href={urlSer(s)}>
+                            {s.data.nombre}
+                          </a>{' '}
+                          <span lang="grc">{s.data.nombreOriginal}</span>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </li>
+            ),
+          )}
+        </ul>
+      </section>
+    ))
+  }
+</Museo>
+
+<style>
+  .intro {
+    text-align: center;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 3rem 0 1.5rem;
+  }
+  .intro h1 {
+    font-size: clamp(2.2rem, 7vw, 3.8rem);
+    margin: 0.25rem 0 0.75rem;
+  }
+  .lema {
+    font-size: 1.25rem;
+  }
+  .criterio {
+    color: var(--tinta-suave);
+    font-size: 1rem;
+  }
+  .boton-recorrido {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.3rem;
+    border: 1px solid var(--acento);
+    font-family: var(--epigrafica);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--tinta);
+    background: color-mix(in oklab, var(--acento) 15%, transparent);
+  }
+  .boton-recorrido:hover {
+    background: color-mix(in oklab, var(--acento) 30%, transparent);
+  }
+  .plano {
+    margin: 2rem 0 3rem;
+    border-block: 1px solid var(--linea);
+    padding: 1rem 0;
+  }
+  .plano ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: 0.4rem 1.5rem;
+  }
+  .plano a {
+    text-decoration: none;
+    color: var(--tinta);
+  }
+  .plano a:hover {
+    color: var(--enlace);
+  }
+  .num {
+    display: inline-block;
+    min-width: 2.6rem;
+    font-family: var(--epigrafica);
+    color: var(--enlace);
+  }
+  .sala {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--linea);
+    scroll-margin-top: 4rem;
+  }
+  .sala-cabecera {
+    max-width: 46rem;
+    margin-bottom: 2rem;
+  }
+  .sala-cabecera h2 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    margin: 0.2rem 0 0.6rem;
+  }
+  .galeria {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(45%, 11rem), 1fr));
+    gap: 2rem 1.5rem;
+    align-items: start;
+  }
+  .pieza a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pieza a :global(.marco) {
+    transition: transform 0.2s ease;
+  }
+  .pieza a:hover :global(.marco),
+  .pieza a:focus-visible :global(.marco) {
+    transform: translateY(-4px);
+  }
+  .vitrina {
+    grid-column: 1 / -1;
+    background: var(--pared-2);
+    border: 1px solid var(--linea);
+    padding: 1.25rem;
+  }
+  .vitrina h3 {
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+  }
+  .galeria-vitrina {
+    margin-bottom: 1.25rem;
+  }
+  .nombres {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 13rem;
+    column-gap: 1.5rem;
+  }
+  .nombres li {
+    break-inside: avoid;
+    padding: 0.1rem 0;
+  }
+  .nombres span {
+    color: var(--tinta-suave);
+    font-size: 0.9rem;
+  }
+</style>

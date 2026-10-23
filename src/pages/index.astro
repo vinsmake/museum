@@ -1,43 +1,151 @@
 ---
-// Portada provisional (Puntos 1-2): lista las mitologías y sus seres para comprobar la carga de datos.
-// Se reemplaza en el Punto 6 por el selector de mitologías.
-import { getMitologias, getSalas } from '../lib/mitologias';
+// Portada: entrada al museo y selector de mitologías. Las que están "proximamente" se muestran sin enlace.
+import Museo from '../layouts/Museo.astro';
+import Obra from '../components/Obra.astro';
+import { getMitologias, getSeres } from '../lib/mitologias';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mitologias = await Promise.all(
-  (await getMitologias()).map(async (m) => ({ mitologia: m, salas: await getSalas(m.id) })),
+  (await getMitologias()).map(async (m) => {
+    const seres = m.data.estado === 'activa' ? await getSeres(m.id) : [];
+    return {
+      mitologia: m,
+      seres,
+      conObra: seres.filter((s) => s.data.imagenes.length > 0),
+    };
+  }),
 );
+// Obras de la entrada: unos cuantos seres con imagen, en orden cronológico
+const destacados = ['caos', 'gea', 'urano', 'crono', 'zeus', 'atenea', 'afrodita', 'prometeo'];
+const vestibulo = mitologias
+  .flatMap(({ seres }) => seres)
+  .filter((s) => destacados.includes(s.slug) && s.data.imagenes.length > 0);
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Museo Mitológico</title>
-	</head>
-	<body>
-		<h1>Museo Mitológico</h1>
-		<p>En construcción.</p>
-		{mitologias.map(({ mitologia, salas }) => (
-			<section>
-				<h2>{mitologia.data.nombre} ({mitologia.data.estado})</h2>
-				<p>Canon: {mitologia.data.canon.obra}, {mitologia.data.canon.autor}</p>
-				{salas.filter((sala) => sala.seres.length > 0).map((sala) => (
-					<>
-						<h3>{sala.nombre} (vv. {sala.versos})</h3>
-						<ol>
-							{sala.seres.map((ser) => (
-								<li>
-									{ser.data.nombre} ({ser.data.nombreOriginal}), v. {ser.data.aparicion.versos}
-									{ser.hijos.length > 0 && <> · hijos: {ser.hijos.join(', ')}</>}
-								</li>
-							))}
-						</ol>
-					</>
-				))}
-			</section>
-		))}
-	</body>
-</html>
+<Museo titulo="Museo Mitológico">
+  <section class="entrada">
+    <p class="etiqueta">Museo interactivo</p>
+    <h1>Museo Mitológico</h1>
+    <p class="lema">
+      Un recorrido por los dioses, titanes, monstruos y héroes en el orden en que aparecen en los poemas que los
+      cantaron, con obras reales de los museos del mundo.
+    </p>
+  </section>
+
+  {
+    vestibulo.length > 0 && (
+      <ul class="vestibulo" aria-label="Algunas obras del museo">
+        {vestibulo.map((ser) => (
+          <li>
+            <a href={`${base}/${ser.mitologia}/${ser.slug}/`}>
+              <Obra ser={ser} />
+              <span class="cartela-nombre">{ser.data.nombre}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <h2 class="titulo-alas">Las alas del museo</h2>
+  <ul class="alas">
+    {
+      mitologias.map(({ mitologia, seres, conObra }) => {
+        const d = mitologia.data;
+        const activa = d.estado === 'activa';
+        return (
+          <li class:list={['ala', { proximamente: !activa }]} style={`--piedra: ${d.tema.piedra}; --acento: ${d.tema.acento};`}>
+            <h3>{d.nombre}</h3>
+            <p>{d.descripcion}</p>
+            <p class="cartela-dato">
+              Canon: <em>{d.canon.obra}</em>, {d.canon.autor} ({d.canon.fecha})
+            </p>
+            {activa ? (
+              <>
+                <p class="cartela-dato">
+                  {seres.length} seres en {d.salas.length} salas · {conObra.length} con obra
+                </p>
+                <a class="boton" href={`${base}/${mitologia.id}/`}>
+                  Entrar al recorrido
+                </a>
+              </>
+            ) : (
+              <p class="etiqueta">Próximamente</p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+</Museo>
+
+<style>
+  .entrada {
+    text-align: center;
+    padding: 4rem 0 2rem;
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+  .entrada h1 {
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    margin: 0.25rem 0 1rem;
+    letter-spacing: 0.08em;
+  }
+  .lema {
+    font-size: 1.25rem;
+    color: var(--tinta-suave);
+  }
+  .vestibulo {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1.25rem;
+  }
+  .vestibulo a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+    text-decoration: none;
+  }
+  .titulo-alas {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  .alas {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: 1.5rem;
+  }
+  .ala {
+    border: 1px solid var(--linea);
+    border-top: 4px solid var(--acento);
+    background: var(--pared-2);
+    padding: 1.5rem;
+  }
+  .ala h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  .proximamente {
+    opacity: 0.75;
+  }
+  .boton {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--acento);
+    font-family: var(--epigrafica);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: var(--tinta);
+    background: color-mix(in oklab, var(--acento) 15%, transparent);
+  }
+  .boton:hover {
+    background: color-mix(in oklab, var(--acento) 30%, transparent);
+  }
+</style>

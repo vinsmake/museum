@@ -55,33 +55,44 @@ salas:
   - id: proemio
     nombre: Las Musas del Helicón
     versos: 1-115
+    descripcion: Hesíodo pastorea sus ovejas al pie del Helicón cuando las nueve Musas, hijas de Zeus y Mnemósine, le enseñan el canto y le piden que celebre el linaje de los dioses.
   - id: primordiales
     nombre: El origen del mundo
     versos: 116-125
+    descripcion: Primero fue el Caos. Después surgen Gea, el Tártaro y Eros; del Caos nacen Érebo y la Noche, y de la Noche, el Éter y el Día.
   - id: hijos-de-gea
     nombre: Hijos de Gea y Urano
     versos: 126-153
+    descripcion: Gea da a luz al Cielo estrellado, a las Montañas y al Mar. Unida a Urano engendra a los doce Titanes, a los Cíclopes y a los Hecatónquiros.
   - id: castracion
     nombre: La caída de Urano
     versos: 154-210
+    descripcion: Urano esconde a sus hijos en el seno de la Tierra. Crono lo castra con la hoz de Gea; de la sangre nacen las Erinias, los Gigantes y las Melias, y de la espuma, Afrodita.
   - id: hijos-de-nix
     nombre: Hijos de la Noche y la Discordia
     versos: 211-232
+    descripcion: La Noche engendra sola a la Muerte, el Sueño, los Sueños, las Moiras y las Keres. Su hija Eris, la Discordia, pare las penas que afligen a los mortales.
   - id: linaje-del-mar
     nombre: El linaje del mar
     versos: 233-336
+    descripcion: Ponto y Gea engendran a Nereo y a los dioses del mar. De ellos vienen las cincuenta Nereidas, Iris y las Harpías, las Grayas, las Gorgonas y una estirpe de monstruos.
   - id: hijos-de-titanes
     nombre: Hijos de los Titanes
     versos: 337-452
+    descripcion: Los Titanes se unen y nacen los ríos y las Oceánides, el Sol, la Luna y la Aurora, los Vientos y las estrellas, Estigia y sus hijos, y Hécate, honrada por Zeus.
   - id: olimpicos
     nombre: El nacimiento de los Olímpicos
     versos: 453-506
+    descripcion: Rea da a luz a Hestia, Deméter, Hera, Hades, Poseidón y Zeus. Crono los devora uno a uno, hasta que Rea le da a tragar una piedra en lugar del menor.
   - id: prometeo
     nombre: Prometeo y Pandora
     versos: 507-616
+    descripcion: Prometeo engaña a Zeus en el reparto del sacrificio y roba el fuego. En castigo, los dioses fabrican a la primera mujer y Prometeo queda encadenado.
   - id: titanomaquia
     nombre: Titanomaquia y Tifón
     versos: 617-880
+    descripcion: Diez años de guerra entre Titanes y Olímpicos. Con los Hecatónquiros y el rayo de los Cíclopes, Zeus vence y encierra a los Titanes en el Tártaro; luego derrota a Tifón.
   - id: reinado-de-zeus
     nombre: El reinado de Zeus
     versos: 881-1022
+    descripcion: Zeus reparte los honores y se une a Metis, Temis, Hera y otras diosas. Nacen los dioses del Olimpo y los héroes hijos de diosas y mortales.

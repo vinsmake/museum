@@ -1,0 +1,77 @@
+---
+// Layout común de todas las páginas del museo. Estilos globales en src/styles/museo.css.
+// `tema` (de mitologia.yaml) colorea las salas de cada mitología.
+import '../styles/museo.css';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  tema?: { piedra: string; acento: string };
+  mitologia?: { id: string; nombre: string };
+}
+
+const { titulo, descripcion = 'Museo interactivo de la mitología con obras reales.', tema, mitologia } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const estilo = tema ? `--piedra: ${tema.piedra}; --acento: ${tema.acento};` : undefined;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={descripcion} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    />
+    <title>{titulo}</title>
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('tema');
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body style={estilo}>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+    <header class="cabecera">
+      <a class="marca" href={`${base}/`}>Museo Mitológico</a>
+      <nav aria-label="Principal">
+        {mitologia && (
+          <>
+            <a href={`${base}/${mitologia.id}/`}>Recorrido</a>
+            <a href={`${base}/${mitologia.id}/indice/`}>Índice</a>
+          </>
+        )}
+        <button class="boton-tema" type="button" aria-label="Cambiar entre tema claro y oscuro">◐</button>
+      </nav>
+    </header>
+    <main id="contenido">
+      <slot />
+    </main>
+    <footer class="pie">
+      <p>
+        Obras de Wikimedia Commons, con su autor y licencia en cada ficha. Textos basados en la <em>Teogonía</em> de
+        Hesíodo.
+      </p>
+    </footer>
+    <script>
+      const boton = document.querySelector<HTMLButtonElement>('.boton-tema');
+      boton?.addEventListener('click', () => {
+        const raiz = document.documentElement;
+        const oscuro =
+          raiz.dataset.theme === 'dark' ||
+          (!raiz.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+        raiz.dataset.theme = oscuro ? 'light' : 'dark';
+        try {
+          localStorage.setItem('tema', raiz.dataset.theme);
+        } catch {}
+      });
+    </script>
+  </body>
+</html>

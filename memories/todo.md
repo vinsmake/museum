@@ -1,6 +1,6 @@
 # Plan de trabajo: Museo Mitológico Interactivo
 
-> Estado: **Punto 6 terminado. Punto 7 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
+> Estado: **Punto 7 terminado. Punto 8 en curso** (el usuario pidió avanzar sin detenerse entre puntos, 2026-10-23).
 > Regla de trabajo: se ejecuta **un punto a la vez**. Al terminar cada punto se marca aquí `[x]`,
 > se actualiza la memoria correspondiente y se **pide confirmación** antes de seguir con el siguiente.
 
@@ -75,7 +75,7 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - Hecho: 103 archivos, 112 seres con imagen (miniaturas de 1280 px). Scripts en `scripts/imagenes/`, créditos en
   `scripts/imagenes/descargadas.json`.
 
-### [ ] Punto 7. Recorrido cronológico del museo
+### [x] Punto 7. Recorrido cronológico del museo
 - Portada: entrada al museo y selector de mitologías (griega activa; nórdica "próximamente").
 - Recorrido `/griega`: las 11 salas en orden, cada una como una galería con sus obras enmarcadas y una cartela
   (nombre, nombre griego, versos). Los seres sin imagen aparecen como ficha tipográfica en el mismo lugar del orden.
@@ -126,3 +126,6 @@ La arquitectura debe admitir más mitologías en el futuro (nórdica, egipcia, e
 - 2026-10-23: Punto 6 terminado. 103 imágenes de Commons (54 PD, 14 CC0, 38 CC BY/BY-SA) para 112 seres, escritas
   en el bloque `imagenes` de cada `.md`. Scripts de búsqueda y descarga en `scripts/imagenes/`. Build OK.
   El usuario pidió seguir con los puntos siguientes sin pedir confirmación entre ellos.
+- 2026-10-23: Punto 7 terminado. Portada, recorrido por salas (con vitrinas para grupos grandes), ficha con
+  anterior/siguiente y flechas del teclado, índice con búsqueda y filtros. 316 páginas. Las salas tienen ahora
+  `descripcion` en `mitologia.yaml`. Detalle en `memories/arquitectura.md` (sección Páginas).

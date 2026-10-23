@@ -18,7 +18,14 @@ src/
     nordica/
       mitologia.yaml                 # estado: proximamente (sin seres aún)
   lib/mitologias.ts                  # ÚNICA puerta de acceso a los datos + validación
-  pages/index.astro                  # portada provisional (lista de comprobación)
+  lib/formato.ts                     # utilidades de presentación (urls, números romanos, vitrinas)
+  layouts/Museo.astro                # layout común: cabecera, pie, tema claro/oscuro, colores de la mitología
+  components/Obra.astro              # obra enmarcada (imagen optimizada) o ficha tipográfica sin imagen
+  styles/museo.css                   # estilos globales y variables de color
+  pages/index.astro                  # portada: vestíbulo y selector de mitologías
+  pages/[mitologia]/index.astro      # recorrido: plano y salas como galerías
+  pages/[mitologia]/[ser].astro      # ficha del ser con anterior/siguiente
+  pages/[mitologia]/indice.astro     # índice con búsqueda y filtros
 scripts/imagenes/                    # búsqueda y descarga de obras en Commons (ver imagenes.md)
 memories/                            # documentación y contexto (este directorio)
 ```
@@ -52,3 +59,19 @@ memories/                            # documentación y contexto (este directori
 - **Markdown por ser**: el frontmatter son los datos y el cuerpo es la descripción larga (se renderiza con `render()`).
 - **Imágenes junto a los datos** (`<mitologia>/imagenes/`), validadas con `image()`: una ruta rota detiene el build.
 - `z` se importa de `astro/zod` (el de `astro:content` está obsoleto y desaparece en Astro 8).
+
+## Páginas (Punto 7)
+Solo se generan rutas para mitologías con `estado: activa`.
+
+| URL | Archivo | Qué muestra |
+|---|---|---|
+| `/` | `pages/index.astro` | Vestíbulo con obras destacadas (lista `destacados`) y una tarjeta por mitología |
+| `/<mitologia>/` | `pages/[mitologia]/index.astro` | Introducción, plano de salas (anclas `#<sala>`) y cada sala como galería. Los grupos de más de `TAMANO_VITRINA` (6) miembros se agrupan en una **vitrina**: los que tienen obra, enmarcados; el resto, lista de nombres |
+| `/<mitologia>/<slug>/` | `pages/[mitologia]/[ser].astro` | Obra grande con crédito, datos, citas, parentesco con enlaces, "del mismo grupo", otras obras, y **anterior/siguiente** en orden cronológico (flechas ← → del teclado) |
+| `/<mitologia>/indice/` | `pages/[mitologia]/indice.astro` | Todos los seres; búsqueda sin tildes por nombre, nombre original, transliteración y otros nombres; filtros por sala, categoría y "solo con obra". El estado de los filtros queda en la URL (`?q=zeus&sala=olimpicos`) |
+
+- Imágenes: `<Picture>` de `astro:assets` genera AVIF y WebP en varios anchos. La primera generación tarda
+  ~5 min (313 páginas, 103 obras); después Astro las reutiliza de su caché (`node_modules/.astro`, en el volumen).
+- Encuadre: las miniaturas recortan a 3:4 con `object-position: 50% 15%` (cabezas de estatuas visibles);
+  un ser puede cambiarlo con `enfoque` en su imagen.
+- Nombres de las vitrinas: `NOMBRE_GRUPO` en `lib/formato.ts`.
